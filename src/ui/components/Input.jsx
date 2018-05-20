@@ -15,6 +15,7 @@ class InputBase extends Component {
     const {
       children,
       input,
+      inputWrapper,
       inputComponent,
       required,
       config,
@@ -38,7 +39,8 @@ class InputBase extends Component {
       ...rest
     } = this.props
 
-    const InputControl = inputComponent || 'input'
+    const $wrapper = inputWrapper || InputWrapper
+    const $input = inputComponent || 'input'
     const inputIsClass = typeof inputComponent == 'function'
     const providedRest = inputIsClass ? {
         ...rest,
@@ -56,7 +58,7 @@ class InputBase extends Component {
     const placeholder = noWrap ? label : null
 
     return (
-      <InputWrapper
+      <$wrapper
         label={label}
         required={required}
         horizontal={horizontal}
@@ -65,7 +67,7 @@ class InputBase extends Component {
         warningMessage={touched && warning}
         elementOnly={noWrap}
       >
-        <InputControl
+        <$input
           className="form-control"
           type={type || 'text'}
           onKeyDown={onKeyDown}
@@ -76,8 +78,8 @@ class InputBase extends Component {
           ref={element => this.inputControl = element}
         >
           {children}
-        </InputControl>
-      </InputWrapper>
+        </$input>
+      </$wrapper>
     )
   }
 }
