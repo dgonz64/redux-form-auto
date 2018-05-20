@@ -2,7 +2,11 @@
 
 This library allows your react application to automatically generate forms and validation code using [ReduxForm](https://github.com/erikras/redux-form/) for state management. The form and validations are generated following a schema inspired by [SimpleSchema](https://github.com/aldeed/simple-schema-js).
 
-At the moment the only *skin* included is a stylable set of css's that happens to be compatible with [Bootstrap 3](http://getbootstrap.com/docs/3.3/). More skins will be added. Join me!
+At the moment the only *skin* included is a stylable set of css's that happens to be compatible with [Bootstrap 3](http://getbootstrap.com/docs/3.3/). More skins will be added. [Join me](#help-wanted)!
+
+## Watch a demo
+
+[Demo](https://dgonz64.github.io/redux-form-auto/demo.html)
 
 ## Installation
 
@@ -14,6 +18,7 @@ At the moment the only *skin* included is a stylable set of css's that happens t
 
 Write a schema for each model you have:
 
+```javascript
     import { Schema } from 'redux-form-auto'
 
     export const client = new Schema('client', {
@@ -26,6 +31,7 @@ Write a schema for each model you have:
         type: 'number'
       }
     })
+```
 
 Here we are saying that a `client` is required to have a name and providing its allowed length. Also client has age and it's a number.
 
@@ -33,6 +39,7 @@ Here we are saying that a `client` is required to have a name and providing its 
 
 `<Autoform />` React component will generate connected inputs including translatable label, proper input types and error/warning messages:
 
+```javascript
     import { Autoform } from 'redux-from-auto'
     import { client } from './models/client'
 
@@ -41,11 +48,13 @@ Here we are saying that a `client` is required to have a name and providing its 
         schema={client}
         onSubmit={onSubmit}
       />
+```
 
 Form will be validated following the rules set in the schema, beginning with the type itself.
 
 It also allows you to build arrays of other schemas as ReduxForm's [FieldArray](https://redux-form.com/7.3.0/docs/api/fieldarray.md/). You just toss an array with another schema from elsewhere as first element and `Autoform` will allow you to add and remove elements:
 
+```javascript
     import { Schema } from 'redux-form-auto'
     import { client } from './client'
 
@@ -55,8 +64,9 @@ It also allows you to build arrays of other schemas as ReduxForm's [FieldArray](
         minChildren: 10
       }
     })
+```
 
-Read the documentation to find out what else you can do.
+Read the [documentation](https://dgonz64.github.io/redux-form-auto/) to find out what else you can do.
 
 ## Rationale
 

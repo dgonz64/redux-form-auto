@@ -51,7 +51,7 @@ class AppBase extends Component {
     return (
       <div className="row app">
         <div className="col-md-5 code">
-          <Panel header="Schema">
+          <Panel header="Schema (edit and see)">
             <AceEditor
               mode="javascript"
               theme="github"
