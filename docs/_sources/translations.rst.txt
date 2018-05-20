@@ -1,7 +1,7 @@
 Translation
 -----------
 
-redux-form-auto uses internally a simple built-in translation system. This system and its translation tables can be replaced and even completely overriden.
+redux-form-auto uses internally a simple built-in translation system. This system and its translation tables can be replaced and even completely overridden.
 
 The translation strings are hierarchised following some pseudo-semantic rules::
 
@@ -100,7 +100,7 @@ Or you can drop it directly to ``setTranslator()`` if it's compatible.
 Translatable objects
 ^^^^^^^^^^^^^^^^^^^^
 
-The library uses internally translatable objects. Any validator can return a translatable object as a result of an unsuccessfull validation, as anything positive will be returned on failure.
+The library uses internally translatable objects. Any validator can return a translatable object as a result of an unsuccessful validation, as anything positive will be returned on failure.
 
 To create a translatable object in your custom validator use
 

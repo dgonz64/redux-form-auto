@@ -21,5 +21,5 @@ The most important files:
 Style
 -----
 
-I just need you to follow the style of the file you are changing. If you create a file from scratch you can style it however you want provided it's not a ofuscated code contestant.
+I just need you to follow the style of the file you are changing. If you create a file from scratch you can style it however you want provided it's not an obfuscated code contestant.
 
