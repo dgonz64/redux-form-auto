@@ -1,0 +1,117 @@
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Field } from 'redux-form'
+
+import { InputWrapper } from './InputWrapper'
+import { trModel } from '../../translate'
+import { arrLast } from '../../utils'
+
+class InputBase extends Component {
+  focus() {
+    this.inputControl.focus()
+  }
+
+  render() {
+    const {
+      children,
+      input,
+      inputComponent,
+      required,
+      config,
+      config: {
+        horizontal
+      },
+      elementOnly,
+      inline,
+      type,
+      autoFocus,
+      schemaTypeName,
+      onKeyDown,
+      onKeyPress,
+      labelOverride,
+      meta,
+      meta: {
+        touched,
+        error,
+        warning
+      },
+      ...rest
+    } = this.props
+
+    const InputControl = inputComponent || 'input'
+    const inputIsClass = typeof inputComponent == 'function'
+    const providedRest = inputIsClass ? {
+        ...rest,
+        input,
+        meta,
+        config,
+        autoFocus,
+        schemaTypeName
+      } : input
+
+    const noWrap = type == 'hidden' || elementOnly
+    const fieldName = arrLast(input.name.split('.'))
+    const label = typeof labelOverride != 'undefined' ?
+      labelOverride : trModel(schemaTypeName, fieldName, '_field')
+    const placeholder = noWrap ? label : null
+
+    return (
+      <InputWrapper
+        label={label}
+        required={required}
+        horizontal={horizontal}
+        inline={inline}
+        errorMessage={touched && error}
+        warningMessage={touched && warning}
+        elementOnly={noWrap}
+      >
+        <InputControl
+          className="form-control"
+          type={type || 'text'}
+          onKeyDown={onKeyDown}
+          onKeyPress={onKeyPress}
+          {...providedRest}
+          autoComplete="off"
+          placeholder={placeholder}
+          ref={element => this.inputControl = element}
+        >
+          {children}
+        </InputControl>
+      </InputWrapper>
+    )
+  }
+}
+
+export class Input extends Component {
+  focus() {
+    this.fieldElement.getRenderedComponent().focus()
+  }
+
+  render() {
+    return (
+      <Field
+        component={InputBase}
+        ref={el => this.fieldElement = el}
+        withRef
+        {...this.props}
+      />
+    )
+  }
+}
+
+/**
+ * Skin input propTypes.
+ * @typedef {object} InputPropTypes
+ */
+Input.propTypes = {
+  children: PropTypes.node,
+  name: PropTypes.string.isRequired,
+  fieldSchema: PropTypes.object,
+  schemaTypeName: PropTypes.string.isRequired,
+  label: PropTypes.string,
+  inputComponent: PropTypes.any,
+  required: PropTypes.bool,
+  horizontal: PropTypes.bool,
+  elementOnly: PropTypes.bool,
+  type: PropTypes.string,
+}

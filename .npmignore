@@ -1,0 +1,7 @@
+webpack.*.js
+.gitignore
+.babelrc
+demo
+docs
+docs_src
+package-lock.json

@@ -1,0 +1,16 @@
+{
+	"presets": [
+		["@babel/preset-env", {
+			"targets": {
+				"node": "8.9.4"
+			},
+			"modules": "commonjs"
+		}]
+	],
+	"plugins": [
+		"@babel/plugin-transform-spread",
+		"@babel/plugin-proposal-object-rest-spread",
+		"@babel/transform-react-jsx",
+		"@babel/plugin-transform-modules-commonjs"
+	]
+}

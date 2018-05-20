@@ -1,0 +1,11 @@
+.panel-heading {
+  border-bottom: 0 !important;
+}
+
+.submodel-title {
+  color: #888
+}
+
+.error {
+  color: #a44
+}
