@@ -43,14 +43,16 @@ export const InputArray = ({
   children,
   type,
   newObject,
+  arrayHandler,
   ...rest
 }) => {
-  const Handler = type == "table" ? InputArrayTable : InputArrayPanel
+  const handler = arrayHandler ||
+    (type == "table" ? InputArrayTable : InputArrayPanel)
 
   return (
     <FieldArray
       name={name}
-      component={Handler}
+      component={handler}
       onAdd={handleAdd}
       onRemove={handleRemove}
       instrumentChildren={instrumentChildren}
