@@ -4,4 +4,9 @@ export { Input } from './ui/components/Input'
 export { translatable } from './validation'
 export { addTranslations, setTranslator, tr } from './translate'
 export { setLanguageByName } from './translation_utils'
-export { setSkin, addSkinType } from './ui/componentRender'
+export {
+  setSkin,
+  addSkinType,
+  renderInput,
+  renderInputs
+} from './ui/componentRender'
