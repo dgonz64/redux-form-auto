@@ -179,6 +179,226 @@
 <h2>Form component<a class="headerlink" href="#form-component" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">form</span></code> component is different in the sense that it’s not rendered after a type. Instead, every form renders a form component in case the UI library requires special form wrapping.</p>
 </div>
+<div class="section" id="inputwrap">
+<h2>InputWrap<a class="headerlink" href="#inputwrap" title="Permalink to this headline">¶</a></h2>
+<p>That’s a common component used to create all the input structure, including wrappers. You can use it to avoid boilerplate.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="23%" />
+<col width="10%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Prop</th>
+<th class="head">Type</th>
+<th class="head">Use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">children</span></code></td>
+<td>node</td>
+<td>(optional) You can use InputWrap to… wrap.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">name</span></code></td>
+<td>string</td>
+<td>Field name</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">inputWrapper</span></code></td>
+<td>element</td>
+<td>Wrapper for the input. See below for props.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">inputComponent</span></code></td>
+<td>element</td>
+<td>Component receiving the input. See below for props.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">config</span></code></td>
+<td>object</td>
+<td>Form’s configuration</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">elementOnly</span></code></td>
+<td>boolean</td>
+<td>(optional) Asks the wrapper to not decorate the input</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">inline</span></code></td>
+<td>boolean</td>
+<td>(optional) Passed to wrapper</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td>string</td>
+<td>(optional) Passed to input</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">schemaTypeName</span></code></td>
+<td>string</td>
+<td>Name of the schema as created</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">onKeyDown</span></code></td>
+<td>function</td>
+<td>(optional) Passed to input</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">onKeyPress</span></code></td>
+<td>function</td>
+<td>(optional) Passed to input</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">labelOverride</span></code></td>
+<td>string</td>
+<td>(optional) Passed as label to wrapper instead of</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">meta</span></code></td>
+<td>object</td>
+<td>ReduxForm’s meta</td>
+</tr>
+</tbody>
+</table>
+<p>The props passed to the wrapper component (<code class="docutils literal notranslate"><span class="pre">inputWrapper</span></code>)</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="35%" />
+<col width="13%" />
+<col width="52%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Prop</th>
+<th class="head">Type</th>
+<th class="head">Use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">label</span></code></td>
+<td>string</td>
+<td>Text use as label</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">required</span></code></td>
+<td>boolean</td>
+<td>Field is marked as required</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">horizontal</span></code></td>
+<td>boolean</td>
+<td>Taken from config</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">inline</span></code></td>
+<td>boolean</td>
+<td>Taken from InputWrap props</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">errorMessage</span></code></td>
+<td>string</td>
+<td>To print in red</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">warningMessage</span></code></td>
+<td>string</td>
+<td>To print in orange</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">elementOnly</span></code></td>
+<td>boolean</td>
+<td>Skip wrappings</td>
+</tr>
+</tbody>
+</table>
+<p>The props for the input component are different depending if the <code class="docutils literal notranslate"><span class="pre">inputComponent</span></code> is a string, like <code class="docutils literal notranslate"><span class="pre">'input'</span></code> or a React component.</p>
+<div class="section" id="common-input-props">
+<h3>Common input props<a class="headerlink" href="#common-input-props" title="Permalink to this headline">¶</a></h3>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="20%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Prop</th>
+<th class="head">Type</th>
+<th class="head">Use</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">type</span></code></td>
+<td>string</td>
+<td>From InputWrap</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">onKeyDown</span></code></td>
+<td>function</td>
+<td>From InputWrap</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">onKeyPress</span></code></td>
+<td>function</td>
+<td>From InputWrap</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">autoComplete</span></code></td>
+<td>string</td>
+<td>Always <code class="docutils literal notranslate"><span class="pre">'off'</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">placeholder</span></code></td>
+<td>string</td>
+<td>From InputWrap</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="native-component-ie-input">
+<h3>Native component (ie. <code class="docutils literal notranslate"><span class="pre">'input'</span></code>)<a class="headerlink" href="#native-component-ie-input" title="Permalink to this headline">¶</a></h3>
+<p>For a component like that only ReduxForm <code class="docutils literal notranslate"><span class="pre">input</span></code> object is passed.</p>
+</div>
+<div class="section" id="class-component-ie-myslider">
+<h3>Class component (ie. <code class="docutils literal notranslate"><span class="pre">MySlider</span></code>)<a class="headerlink" href="#class-component-ie-myslider" title="Permalink to this headline">¶</a></h3>
+<p>Extra props are passed:</p>
+<p>Prop # Type # Use
+<code class="docutils literal notranslate"><span class="pre">input</span></code> # object # From decorated Field
+<code class="docutils literal notranslate"><span class="pre">meta</span></code> # object # From decorated Field
+<code class="docutils literal notranslate"><span class="pre">config</span></code> # object # From <code class="docutils literal notranslate"><span class="pre">InputWrap</span></code> from <code class="docutils literal notranslate"><span class="pre">Autoform</span></code>
+<code class="docutils literal notranslate"><span class="pre">autoFocus`</span> <span class="pre">#</span> <span class="pre">boolean</span> <span class="pre">#</span> <span class="pre">From</span> <span class="pre">``InputWrap</span></code>
+<code class="docutils literal notranslate"><span class="pre">schemaTypeName`</span> <span class="pre">#</span> <span class="pre">string</span> <span class="pre">#</span> <span class="pre">From</span> <span class="pre">``Schema</span></code></p>
+</div>
+</div>
+<div class="section" id="rendering">
+<h2>Rendering<a class="headerlink" href="#rendering" title="Permalink to this headline">¶</a></h2>
+<p>To feed <code class="docutils literal notranslate"><span class="pre">InputWrap</span></code> with the needed props, two functions can be used:</p>
+<dl class="function">
+<dt id="renderInputs">
+<code class="descname">renderInputs</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#renderInputs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the inputs to make the schema work.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>params</strong> (<em>object</em>) – </li>
+<li><strong>params.schema</strong> (<a class="reference internal" href="guide.html#Schema" title="Schema"><em>Schema</em></a>) – Schema instance</li>
+<li><strong>params.config</strong> (<em>object</em>) – Rendering configuration</li>
+<li><strong>params.config.arrayMode</strong> (<em>string</em>) – ‘panels’ or ‘table’</li>
+<li><strong>params.config.horizontal</strong> (<em>boolean</em>) – Labels above inputs</li>
+<li><strong>params.rest</strong> (<em>object</em>) – Props passed to each input</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>array</strong> – React elements with the form and inputs.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="renderInput">
+<code class="descname">renderInput</code><span class="sig-paren">(</span><em>params</em><span class="sig-paren">)</span><a class="headerlink" href="#renderInput" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders a single field.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>params</strong> (<em>object</em>) – </li>
+<li><strong>params.field</strong> (<em>string</em>) – Name of the field</li>
+<li><strong>params.fieldSchema</strong> (<em>object</em>) – Schema specification for the field</li>
+<li><strong>params.parent</strong> (<em>string</em>) – Prefix of the field name</li>
+<li><strong>params.schemaTypeName</strong> (<em>string</em>) – Name of the schema (first argument while instantiating a schema)</li>
+<li><strong>params.config</strong> (<em>object</em>) – Form configuration</li>
+<li><strong>params.rest</strong> (<em>object</em>) – props passed to the component</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 <div class="section" id="write-your-own-validators">
 <h2>Write your own validators<a class="headerlink" href="#write-your-own-validators" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you have a field schema and you want to add a custom validator:</p>
@@ -249,6 +469,13 @@ addValidator(&#39;isEven&#39;, entry =&gt;
 <li><a class="reference internal" href="#overriding">Overriding</a></li>
 <li><a class="reference internal" href="#skin-component">Skin component</a></li>
 <li><a class="reference internal" href="#form-component">Form component</a></li>
+<li><a class="reference internal" href="#inputwrap">InputWrap</a><ul>
+<li><a class="reference internal" href="#common-input-props">Common input props</a></li>
+<li><a class="reference internal" href="#native-component-ie-input">Native component (ie. <code class="docutils literal notranslate"><span class="pre">'input'</span></code>)</a></li>
+<li><a class="reference internal" href="#class-component-ie-myslider">Class component (ie. <code class="docutils literal notranslate"><span class="pre">MySlider</span></code>)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#rendering">Rendering</a></li>
 <li><a class="reference internal" href="#write-your-own-validators">Write your own validators</a></li>
 </ul>
 </li>
