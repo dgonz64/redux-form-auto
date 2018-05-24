@@ -1,6 +1,6 @@
 {
   "name": "redux-form-auto-demo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Demo for redux-form-auto",
   "main": "webpack.config.js",
   "scripts": {
