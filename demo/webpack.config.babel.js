@@ -1,5 +1,4 @@
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
 const webpack = require('webpack')
 const glob = require('glob')
 const merge = require('webpack-merge')
@@ -31,15 +30,6 @@ const commonConfig = merge([
         'brace': path.resolve('node_modules', 'brace')
       }
     },
-    plugins: [
-      new HtmlWebpackPlugin({
-        title: 'redux-form-auto demo',
-        template: require('html-webpack-template'),
-        filename: 'demo.html',
-        appMountId: 'root',
-        inject: false
-      })
-    ]
   },
   parts.loadFonts({
     options: {
@@ -51,27 +41,27 @@ const commonConfig = merge([
 
 const productionConfig = merge([
   {
-    // FIXME No. It doesn't.
+    mode: 'production',
+    performance: {
+      hints: 'warning',
+      maxEntrypointSize: 1200000,
+      maxAssetSize: 1200000
+    },
     entry: {
       vendor: ['brace', 'react']
     },
-    mode: 'production',
-    // FIXME Get splitting to work
-    // performance: {
-    //   hints: 'warning',
-    //   maxEntrypointSize: 100000,
-    //   maxAssetSize: 450000
-    // },
+
     context: PATHS.app,
     output: {
-      chunkFilename: '[name]_[chunkhash:8].bundle.js',
-      filename: '[name]_[chunkhash:8].bundle.js',
+      chunkFilename: '[name]_[hash:8].bundle.js',
+      filename: '[name]_[hash:8].bundle.js',
       path: path.join(root, 'build')
     },
     plugins: [
       new webpack.HashedModuleIdsPlugin(),
     ],
   },
+  parts.htmlPlugin({ filename: 'demo.html' }),
   parts.clean(PATHS.build),
   parts.minifyJavascript(),
   parts.minifyCSS({
@@ -111,11 +101,13 @@ const developmentConfig = merge([
       devtoolModuleFilenameTemplate: 'webpack'
     },
   },
+  parts.htmlPlugin({ filename: 'index.html' }),
   parts.loadSourceMaps(),
   parts.generateSourceMaps({ type: 'inline-source-map' }),
   parts.devServer({
     host: process.env.HOST,
-    port: process.env.PORT
+    port: process.env.PORT,
+    index: 'demo.html'
   }),
   parts.loadCSS(),
   parts.loadImages()
@@ -124,9 +116,8 @@ const developmentConfig = merge([
 module.exports = (env = {}) => {
   process.env.BABEL_ENV = env
 
-  if (env.target === 'production') {
+  if (env == 'production')
     return merge(commonConfig, productionConfig)
-  }
-
-  return merge(commonConfig, developmentConfig)
+  else
+    return merge(commonConfig, developmentConfig)
 }
