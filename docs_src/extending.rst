@@ -88,6 +88,83 @@ Form component
 
 The ``form`` component is different in the sense that it's not rendered after a type. Instead, every form renders a form component in case the UI library requires special form wrapping.
 
+InputWrap
+=========
+
+It's a common component used to create all the input structure, including wrappers. You can use it to avoid boilerplate. The final input component used (taken from ``inputComponent`` prop) will be a decorated ``Field``.
+
+================== ======== ===================================================
+Prop               Type     Use
+================== ======== ===================================================
+``children``       node     (optional) You can use InputWrap to... wrap.
+``name``           string   Field name
+``inputWrapper``   element  Wrapper for the input. See below for props.
+``inputComponent`` element  Component receiving the input. See below for props.
+``config``         object   Form's configuration
+``elementOnly``    boolean  (optional) Asks the wrapper to not decorate the input
+``inline``         boolean  (optional) Passed to wrapper
+``type``           string   (optional) Passed to input
+``schemaTypeName`` string   Name of the schema as created
+``onKeyDown``      function (optional) Passed to input
+``onKeyPress``     function (optional) Passed to input
+``labelOverride``  string   (optional) Passed as label to wrapper instead of
+``meta``           object   ReduxForm's meta
+================== ======== ===================================================
+
+The props passed to the wrapper component (``inputWrapper``)
+
+================== ======= ===========================
+Prop               Type    Use
+================== ======= ===========================
+``label``          string  Text use as label
+``required``       boolean Field is marked as required
+``horizontal``     boolean Taken from config
+``inline``         boolean Taken from InputWrap props
+``errorMessage``   string  To print in red
+``warningMessage`` string  To print in orange
+``elementOnly``    boolean Skip wrappings
+================== ======= ===========================
+
+The props for the input component are different depending if the ``inputComponent`` is a string, like ``'input'`` or a React component.
+
+Common input props
+^^^^^^^^^^^^^^^^^^
+
+================ ======== ================
+Prop             Type     Use
+================ ======== ================
+``type``         string   From InputWrap
+``onKeyDown``    function From InputWrap
+``onKeyPress``   function From InputWrap
+``autoComplete`` string   Always ``'off'``
+``placeholder``  string   From InputWrap
+================ ======== ================
+
+Native component (ie. ``'input'``)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For a component like that only ReduxForm ``input`` object is passed.
+
+Class component (ie. ``MySlider``)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Extra props are passed:
+
+Prop # Type # Use
+``input`` # object # From decorated Field
+``meta`` # object # From decorated Field
+``config`` # object # From ``InputWrap`` from ``Autoform``
+``autoFocus` # boolean # From ``InputWrap``
+``schemaTypeName` # string # From ``Schema``
+
+Rendering
+=========
+
+To feed ``InputWrap`` with the needed props, two functions can be used:
+
+.. js:autofunction:: renderInputs
+.. js:autofunction:: renderInput
+
 Write your own validators
 =========================
 
