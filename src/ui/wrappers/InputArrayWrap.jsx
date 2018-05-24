@@ -1,7 +1,5 @@
 import React, { cloneElement } from 'react'
 import PropTypes from 'prop-types'
-import { InputArrayPanel } from './InputArrayPanel'
-import { InputArrayTable } from './InputArrayTable'
 import { FieldArray } from 'redux-form'
 
 const instrumentChildren = ({
@@ -38,21 +36,17 @@ const handleRemove = (fields, idx) => {
  * example clients: [Clients]
  *
  */
-export const InputArray = ({
+export const InputArrayWrap = ({
   name,
   children,
-  type,
   newObject,
   arrayHandler,
   ...rest
 }) => {
-  const handler = arrayHandler ||
-    (type == "table" ? InputArrayTable : InputArrayPanel)
-
   return (
     <FieldArray
       name={name}
-      component={handler}
+      component={arrayHandler}
       onAdd={handleAdd}
       onRemove={handleRemove}
       instrumentChildren={instrumentChildren}
@@ -64,7 +58,7 @@ export const InputArray = ({
   )
 }
 
-InputArray.propTypes = {
+InputArrayWrap.propTypes = {
   name: PropTypes.string,
   type: PropTypes.string,
   children: PropTypes.array.isRequired,

@@ -1,6 +1,4 @@
 export { Form } from './Form'
-export { Input } from './Input'
-export { InputArray } from './InputArray'
 export { Submodel } from './Submodel'
 export { Panel } from './Panel'
 export { Button } from './Button'

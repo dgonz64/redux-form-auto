@@ -1,6 +1,7 @@
 export { Schema } from './schema'
 export { Autoform } from './ui/Autoform'
-export { Input } from './ui/components/Input'
+export { InputWrap } from './ui/wrappers/InputWrap'
+export { InputArrayWrap } from './ui/wrappers/InputArrayWrap'
 export { translatable } from './validation'
 export { addTranslations, setTranslator, tr } from './translate'
 export { setLanguageByName } from './translation_utils'

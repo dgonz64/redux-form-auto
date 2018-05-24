@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 
-import { InputWrapper } from './InputWrapper'
 import { trModel } from '../../translate'
 import { arrLast } from '../../utils'
 
@@ -39,7 +38,7 @@ class InputBase extends Component {
       ...rest
     } = this.props
 
-    const $wrapper = inputWrapper || InputWrapper
+    const $wrapper = inputWrapper
     const $input = inputComponent || 'input'
     const inputIsClass = typeof inputComponent == 'function'
     const providedRest = inputIsClass ? {
@@ -84,7 +83,7 @@ class InputBase extends Component {
   }
 }
 
-export class Input extends Component {
+export class InputWrap extends Component {
   focus() {
     this.fieldElement.getRenderedComponent().focus()
   }
@@ -105,7 +104,7 @@ export class Input extends Component {
  * Skin input propTypes.
  * @typedef {object} InputPropTypes
  */
-Input.propTypes = {
+InputWrap.propTypes = {
   children: PropTypes.node,
   name: PropTypes.string.isRequired,
   fieldSchema: PropTypes.object,

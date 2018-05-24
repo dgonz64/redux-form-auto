@@ -33,7 +33,7 @@ const renderElement = (props, wrapperClasses) =>
     {renderError(props.errorMessage || props.warningMessage)}
   </div>
 
-export const InputWrapper = props => {
+export const BSInputWrapper = props => {
   const label = props.label ? renderLabel(props) : null
   const wrapperClasses = props.wrapperClassName || classnames({
     'col-sm-7': props.horizontal && !props.inline,
@@ -65,7 +65,7 @@ export const InputWrapper = props => {
   }
 }
 
-InputWrapper.propTypes = {
+BSInputWrapper.propTypes = {
   label: PropTypes.string,
   horizontal: PropTypes.bool,
   required: PropTypes.bool,

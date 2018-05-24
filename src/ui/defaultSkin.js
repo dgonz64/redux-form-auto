@@ -1,4 +1,10 @@
 import * as components from './components/index'
+import { InputWrap } from './wrappers/InputWrap'
+import { InputArrayWrap } from './wrappers/InputArrayWrap'
+
+import { InputArrayPanel } from './components/InputArrayPanel'
+import { InputArrayTable } from './components/InputArrayTable'
+import { BSInputWrapper } from './components/BSInputWrapper'
 
 import { renderInputs } from './componentRender'
 
@@ -9,27 +15,28 @@ import { renderInputs } from './componentRender'
  * @property {Component} component
  * @property {function|object} props
  */
-
 export const defaultSkin = {
   form: {
     component: components.Form,
     props: {}
   },
   string: {
-    component: components.Input,
+    component: InputWrap,
     props: {
+      inputWrapper: BSInputWrapper,
       inputComponent: 'input'
     }
   },
   number: {
-    component: components.Input,
+    component: InputWrap,
     props: {
+      inputWrapper: BSInputWrapper,
       inputComponent: 'input',
       type: 'number'
     }
   },
   array: {
-    component: components.InputArray,
+    component: InputArrayWrap,
     props: props => {
       const {
         config = {},
@@ -37,10 +44,12 @@ export const defaultSkin = {
       } = props
 
       const { arrayMode } = config
+      const arrayHandler = arrayMode == 'table' ?
+        InputArrayTable : InputArrayPanel
 
       return {
         ...props,
-        type: arrayMode,
+        arrayHandler,
         children: renderInputs({ schema: type[0], config })
       }
     }
@@ -49,7 +58,7 @@ export const defaultSkin = {
     component: components.Submodel,
   },
   select: {
-    component: components.Input,
+    component: InputWrap,
     props: props => {
       const {
         fieldSchema: { options },
@@ -59,6 +68,7 @@ export const defaultSkin = {
 
       return {
         ...props,
+        inputWrapper: BSInputWrapper,
         inputComponent: 'select',
         children: components.mapSelectOptions(
           schemaTypeName,
@@ -69,19 +79,21 @@ export const defaultSkin = {
     }
   },
   radios: {
-    component: components.Input,
+    component: InputWrap,
     props: props => {
       return {
         ...props,
+        inputWrapper: BSInputWrapper,
         inputComponent: components.Radio,
         children: components.mapRadioOptions(props)
       }
     }
   },
   boolean: {
-    component: components.Input,
+    component: InputWrap,
     props: props => ({
       ...props,
+      inputWrapper: BSInputWrapper,
       inputComponent: components.Checkbox,
       labelOverride: ''
     })
