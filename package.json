@@ -1,6 +1,6 @@
 {
   "name": "redux-form-auto",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Automatic validation and generation of forms for redux-form",
   "main": "./dist/index.js",
   "sideEffects": false,
