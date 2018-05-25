@@ -53,8 +53,8 @@ const productionConfig = merge([
 
     context: PATHS.app,
     output: {
-      chunkFilename: '[name]_[hash:8].bundle.js',
-      filename: '[name]_[hash:8].bundle.js',
+      chunkFilename: '[name]_[chunkhash:8].bundle.js',
+      filename: '[name]_[chunkhash:8].bundle.js',
       path: path.join(root, 'build')
     },
     plugins: [
@@ -73,9 +73,10 @@ const productionConfig = merge([
     }
   }),
   parts.extractCSS(),
-  parts.purifyCSS({
-    paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
-  }),
+  // FIXME not working
+  // parts.purifyCSS({
+  //   paths: glob.sync(`${PATHS.app}/**/*.js`, { nodir: true })
+  // }),
   parts.loadImages({
     options: {
       limit: 15000,
@@ -87,7 +88,7 @@ const productionConfig = merge([
   parts.setFreeVariable(
     'process.env.NODE_ENV',
     'production'
-  )
+  ),
 ])
 
 const developmentConfig = merge([
