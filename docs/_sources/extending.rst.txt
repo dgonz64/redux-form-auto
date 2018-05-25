@@ -91,7 +91,7 @@ The ``form`` component is different in the sense that it's not rendered after a 
 InputWrap
 =========
 
-That's a common component used to create all the input structure, including wrappers. You can use it to avoid boilerplate.
+It's a common component used to create all the input structure, including wrappers. You can use it to avoid boilerplate. The final input component used (taken from ``inputComponent`` prop) will be a decorated ``Field``.
 
 ================== ======== ===================================================
 Prop               Type     Use
