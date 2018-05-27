@@ -1,4 +1,6 @@
 export const es = {
+  add: 'Añadir',
+  remove: 'Quitar',
   error: {
     _: 'Error',
     type: 'Valor incorrecto, esperando __type__',

@@ -1,4 +1,6 @@
 export const en = {
+  add: 'Add',
+  remove: 'Remove',
 	error: {
 		_: 'Error',
 		type: 'Incorrect value, expecting a __type__',
