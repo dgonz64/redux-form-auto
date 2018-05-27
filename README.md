@@ -88,4 +88,4 @@ Also redux-form-auto has some of its own
 
 ## Help wanted
 
-Let's have some fun automatizing the hell out of every UI library out there. [Join me](doc/CONTRIBUTING.md)!
+Let's have some fun automatizing the hell out of every UI library out there. [Join me](https://github.com/dgonz64/redux-form-auto/blob/master/CONTRIBUTING.md)!
