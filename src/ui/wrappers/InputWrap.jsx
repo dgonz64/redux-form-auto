@@ -29,6 +29,7 @@ class InputBase extends Component {
       onKeyDown,
       onKeyPress,
       labelOverride,
+      componentPropMap,
       meta,
       meta: {
         touched,
@@ -41,14 +42,15 @@ class InputBase extends Component {
     const $wrapper = inputWrapper
     const $input = inputComponent || 'input'
     const inputIsClass = typeof inputComponent == 'function'
-    const providedRest = inputIsClass ? {
+    const providedRest = componentPropMap ?
+      componentPropMap(this.props) : (inputIsClass ? {
         ...rest,
         input,
         meta,
         config,
         autoFocus,
         schemaTypeName
-      } : input
+      } : input)
 
     const noWrap = type == 'hidden' || elementOnly
     const fieldName = arrLast(input.name.split('.'))
