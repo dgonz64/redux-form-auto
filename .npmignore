@@ -1,6 +1,7 @@
 webpack.*.js
 .gitignore
 .babelrc
+.nvmrc
 demo
 docs
 docs_src
