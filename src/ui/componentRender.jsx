@@ -40,6 +40,7 @@ export const renderInput = ({
     const baseProps = {
       key: useField,
       name: useField,
+      field,
       fieldSchema,
       schemaTypeName,
       config,
