@@ -32,7 +32,8 @@ export const defaultSkin = {
     props: {
       inputWrapper: BSInputWrapper,
       inputComponent: 'input',
-      type: 'number'
+      type: 'number',
+      parse: value => Number(value)
     }
   },
   array: {
