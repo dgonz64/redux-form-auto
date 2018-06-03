@@ -8,9 +8,9 @@
     "build": "rimraf dist && babel src --out-dir dist",
     "prepublishOnly": "npm run build",
     "watch": "rimraf dist && babel src --out-dir dist --watch --verbose",
-    "test": "jest",
+    "test": "node_modules/.bin/jest --verbose",
     "testDebug": "node --inspect-brk node_modules/.bin/jest --runInBand",
-    "testVerbose": "node_modules/.bin/jest --verbose",
+    "testShort": "jest",
     "demo": "cd demo && npm run buildAndCopy",
     "sphinx": "sphinx-build -b html ./docs_src ./docs",
     "docs": "rimraf docs && npm run demo && npm run sphinx"

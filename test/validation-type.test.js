@@ -16,6 +16,9 @@ const schema = new Schema('owner', {
   age: {
     type: 'integer'
   },
+  shoes: {
+    type: 'number'
+  },
   favourite: {
     type: pet,
     required: true
@@ -237,6 +240,57 @@ test('finds errors inside subschemas', () => {
           msg: 'error.max',
           msgData: { max: 4 }
         }
+      }
+    },
+    valid: false,
+    warnings: {}
+  })
+})
+
+test('integers with decimals don\'t validate', () => {
+  const result = schema.validate({
+    favourite: { name: 'Vega' },
+    age: 12.3
+  })
+
+  expect(result).toEqual({
+    errors: {
+      age: {
+        _translatable: true,
+        msg: 'error.type',
+        msgData: { type: 'integer' }
+      }
+    },
+    valid: false,
+    warnings: {}
+  })
+})
+
+test('numbers validate correctly', () => {
+  const result = schema.validate({
+    favourite: { name: 'Vega' },
+    shoes: 13
+  })
+
+  expect(result).toEqual({
+    errors: {},
+    valid: true,
+    warnings: {}
+  })
+})
+
+test('no numbers doesn\'t validate correctly', () => {
+  const result = schema.validate({
+    favourite: { name: 'Vega' },
+    shoes: 'fourteen'
+  })
+
+  expect(result).toEqual({
+    errors: {
+      shoes: {
+        _translatable: true,
+        msg: 'error.type',
+        msgData: { type: 'number' }
       }
     },
     valid: false,
