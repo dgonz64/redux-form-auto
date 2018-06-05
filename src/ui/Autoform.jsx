@@ -23,6 +23,8 @@ export class Autoform extends Component {
       noWarns,
       noTranslate,
       noConnect,
+      formProps,
+      elementProps,
       ...rest
     } = this.props
 
@@ -46,8 +48,9 @@ export class Autoform extends Component {
         validate={errorer}
         warn={warner}
         {...rest}
+        {...formProps}
       >
-        {renderInputs({ schema, ...rest })}
+        {renderInputs({ schema, ...rest, ...elementProps })}
       </$formComponent>
     )
   }
