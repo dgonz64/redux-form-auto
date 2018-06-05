@@ -1,6 +1,6 @@
 # redux-form-auto
 
-This library allows your react application to automatically generate forms and validation code using [ReduxForm](https://github.com/erikras/redux-form/) for state management. The form and validations are generated following a schema inspired by [SimpleSchema](https://github.com/aldeed/simple-schema-js).
+This library allows your React application to automatically generate forms and validation code using [ReduxForm](https://github.com/erikras/redux-form/) for state management. The form and validations are generated following a schema inspired by [SimpleSchema](https://github.com/aldeed/simple-schema-js).
 
 At the moment the only *skin* included is a stylable set of css's that happens to be compatible with [Bootstrap 3](http://getbootstrap.com/docs/3.3/). More skins will be added. [Join me](#help-wanted)!
 
