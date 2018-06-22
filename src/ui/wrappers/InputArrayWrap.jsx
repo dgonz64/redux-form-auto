@@ -5,7 +5,6 @@ import { FieldArray } from 'redux-form'
 const instrumentChildren = ({
   field,
   idx,
-  total,
   children
 }) => {
   return children.map((child, inputIdx) => {
@@ -16,8 +15,6 @@ const instrumentChildren = ({
     return cloneElement(child, {
       name: newName,
       key: inputIdx,
-      inputArrayIdx: idx,
-      inputArrayTotal: total,
       ...rest
     })
   })

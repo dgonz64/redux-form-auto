@@ -22,13 +22,14 @@ const renderItemHeader = ({
   </Button>
 
 const renderInputs = (props) => {
-  const { fields, total, onRemove, children } = props
+  const { fields, onRemove, children } = props
+
   return fields.map((field, idx) => {
     const header = renderItemHeader({ fields, onRemove, idx })
 
     return (
       <Panel key={idx} header={header}>
-        {props.instrumentChildren({ field, idx, total, children })}
+        {props.instrumentChildren({ field, idx, children })}
       </Panel>
     )
   })

@@ -17,13 +17,12 @@ const renderCloser = ({ fields, idx, onRemove }) =>
 const addRemove = ({
   field,
   idx,
-  total,
   children,
   instrumentChildren,
   onRemove,
   fields
 }) => {
-  const instrumented = instrumentChildren({ field, idx, total, children })
+  const instrumented = instrumentChildren({ field, idx, children })
   const closer = renderCloser({ fields, idx, onRemove })
   const childrenAndClose = [closer, ...instrumented]
 
@@ -45,12 +44,9 @@ const addRemove = ({
 }
 
 const renderInputs = (props) => {
-  // Discard add
-  const total = props.fields.length - 1
-
   return props.fields.map((field, idx) =>
     <tr key={idx}>
-      {addRemove({ field, idx, total, ...props })}
+      {addRemove({ ...props, field, idx })}
     </tr>
   )
 }
