@@ -49,7 +49,7 @@ minChildren number   Minimum amount of children an array field can have
 maxChildren number   Maximum amount of children an array field can have
 min         number   Minimum length of the value
 max         number   Maximum length of the value
-required    bool     The value can't be empty or undefined
+required    boolean  The value can't be empty or undefined
 validation  function Function that takes the value and entry and returns validity
 accept      regex    Regex. The value matches the regex
 reject      regex    The value is not matching the regex
@@ -97,7 +97,7 @@ Putting the validators directly is the same as using the error object. The latte
 Schema class
 ------------
 
-The schema stablishes the validation and is also read by ``<Autoform />`` to generate inputs.
+The schema establishes the validation and is also read by ``<Autoform />`` to generate inputs.
 
 The instance can be stored anywhere, like your own model object or a module. At the moment it doesn't change over time.
 
@@ -117,7 +117,7 @@ form        string          (optional) Name for the form, overrides schema's nam
 noErrors    boolean         (optional) Disables error reporting
 noWarns     boolean         (optional) Disables warnings
 noConnect   boolean         (optional) Don't connect to store. You are in charge
-noTranslate boolean         (optional) Don't traslate the form
+noTranslate boolean         (optional) Don't translate the form
 onSubmit    function        (optional) Code called when submitting
 config      object          (optional) Form config, see below
 =========== =============== ======================================================
