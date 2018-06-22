@@ -100,7 +100,7 @@ Prop               Type     Use
 ``name``           string   Field name
 ``inputWrapper``   element  Wrapper for the input. See below for props.
 ``inputComponent`` element  Component receiving the input. See below for props.
-``config``         object   Form's configuration
+``config``         object   Form configuration
 ``elementOnly``    boolean  (optional) Asks the wrapper to not decorate the input
 ``inline``         boolean  (optional) Passed to wrapper
 ``type``           string   (optional) Passed to input

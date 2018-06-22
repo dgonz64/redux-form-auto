@@ -116,7 +116,20 @@ schema      Schema instance Schema used to build the form
 form        string          (optional) Name for the form, overrides schema's name
 noErrors    boolean         (optional) Disables error reporting
 noWarns     boolean         (optional) Disables warnings
-noConnect   boolean         (optional) Doesn't connect to store. You are in charge
-noTranslate boolean         (optional) Doesn't traslate the form.
+noConnect   boolean         (optional) Don't connect to store. You are in charge
+noTranslate boolean         (optional) Don't traslate the form
 onSubmit    function        (optional) Code called when submitting
+config      object          (optional) Form config, see below
 =========== =============== ======================================================
+
+Config
+------
+
+The ``config`` prop is an object that has the following attributes
+
+========== ===================================================================
+Attribute  Meaning
+========== ===================================================================
+horizontal If true, labels are to the left of the inputs.
+arrayMode  ``'table'`` or ``'panels'`` depending on wanted array field format.
+========== ===================================================================
