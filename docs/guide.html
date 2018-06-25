@@ -142,7 +142,7 @@
 <td>Maximum length of the value</td>
 </tr>
 <tr class="row-even"><td>required</td>
-<td>bool</td>
+<td>boolean</td>
 <td>The value can’t be empty or undefined</td>
 </tr>
 <tr class="row-odd"><td>validation</td>
@@ -203,7 +203,7 @@
 </div>
 <div class="section" id="schema-class">
 <h2>Schema class<a class="headerlink" href="#schema-class" title="Permalink to this headline">¶</a></h2>
-<p>The schema stablishes the validation and is also read by <code class="docutils literal notranslate"><span class="pre">&lt;Autoform</span> <span class="pre">/&gt;</span></code> to generate inputs.</p>
+<p>The schema establishes the validation and is also read by <code class="docutils literal notranslate"><span class="pre">&lt;Autoform</span> <span class="pre">/&gt;</span></code> to generate inputs.</p>
 <p>The instance can be stored anywhere, like your own model object or a module. At the moment it doesn’t change over time.</p>
 <dl class="class">
 <dt id="Schema">
@@ -421,15 +421,42 @@ object about the results.</p>
 </tr>
 <tr class="row-even"><td>noConnect</td>
 <td>boolean</td>
-<td>(optional) Doesn’t connect to store. You are in charge</td>
+<td>(optional) Don’t connect to store. You are in charge</td>
 </tr>
 <tr class="row-odd"><td>noTranslate</td>
 <td>boolean</td>
-<td>(optional) Doesn’t traslate the form.</td>
+<td>(optional) Don’t translate the form</td>
 </tr>
 <tr class="row-even"><td>onSubmit</td>
 <td>function</td>
 <td>(optional) Code called when submitting</td>
+</tr>
+<tr class="row-odd"><td>config</td>
+<td>object</td>
+<td>(optional) Form config, see below</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="config">
+<h2>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> prop is an object that has the following attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>horizontal</td>
+<td>If true, labels are to the left of the inputs.</td>
+</tr>
+<tr class="row-odd"><td>arrayMode</td>
+<td><code class="docutils literal notranslate"><span class="pre">'table'</span></code> or <code class="docutils literal notranslate"><span class="pre">'panels'</span></code> depending on wanted array field format.</td>
 </tr>
 </tbody>
 </table>
@@ -454,6 +481,7 @@ object about the results.</p>
 </li>
 <li><a class="reference internal" href="#schema-class">Schema class</a></li>
 <li><a class="reference internal" href="#autoform-component">Autoform component</a></li>
+<li><a class="reference internal" href="#config">Config</a></li>
 </ul>
 </li>
 </ul>
