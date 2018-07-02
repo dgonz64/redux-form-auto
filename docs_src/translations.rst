@@ -3,7 +3,7 @@ Translation
 
 redux-form-auto uses internally a simple built-in translation system. This system and its translation tables can be replaced and even completely overridden.
 
-The translation strings are hierarchised following some pseudo-semantic rules::
+The translation strings are hierarchized following some pseudo-semantic rules::
 
   `models.${model}.${field}.${misc}`
 
@@ -109,3 +109,5 @@ To create a translatable object in your custom validator use
 Out of curiosity, the following is the structure of such object. It's not a function (sorry about that).
 
 .. js:autofunction:: translatableObject
+
+The translatable object was created in order to be able to transfer error messages without agreeing on language, for example to validate on server.

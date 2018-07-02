@@ -1,17 +1,16 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
 import { mount } from 'enzyme'
-import {
-  createStore,
-  combineReducers,
-} from 'redux'
-import { Provider } from 'react-redux'
-import { reducer as formReducer } from 'redux-form'
-
-import { Schema } from '../../src/schema'
-import { Autoform } from '../../src/ui/Autoform.jsx'
-import { setLanguageByName } from '../../src/translation_utils'
 import config from './enzymeConfig'
+
+import {
+  Schema,
+  Autoform,
+  addSkinType,
+  setLanguageByName
+} from '../../src/index'
+
+import { App } from './app'
 
 const pet = new Schema('pet', {
   name: {
@@ -41,17 +40,6 @@ const owner = new Schema('owner', {
     type: 'boolean'
   }
 })
-
-const store = createStore(
-  combineReducers({
-    form: formReducer
-  })
-)
-
-const App = ({ children }) =>
-  <Provider store={store}>
-    {children}
-  </Provider>
 
 test('basic tests in input', () => {
   const initially = {
