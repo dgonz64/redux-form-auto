@@ -41,8 +41,8 @@
             
   <div class="section" id="translation">
 <h1>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h1>
-<p>redux-form-auto uses internally a simple built-in translation system. This system and its translation tables can be replaced and even completely overridden.</p>
-<p>The translation strings are hierarchised following some pseudo-semantic rules:</p>
+<p>redux-form-auto uses internally a simple better-than-nothing built-in translation system. This system and its translation tables can be replaced and even completely overridden.</p>
+<p>The translation strings are hierarchized following some pseudo-semantic rules:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>`models.${model}.${field}.${misc}`
 </pre></div>
 </div>
@@ -223,6 +223,7 @@
 </table>
 </dd></dl>
 
+<p>The translatable object was created in order to be able to transfer error messages without agreeing on language, for example to validate on server.</p>
 </div>
 </div>
 
