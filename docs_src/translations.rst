@@ -1,7 +1,7 @@
 Translation
 -----------
 
-redux-form-auto uses internally a simple built-in translation system. This system and its translation tables can be replaced and even completely overridden.
+redux-form-auto uses internally a simple better-than-nothing built-in translation system. This system and its translation tables can be replaced and even completely overridden.
 
 The translation strings are hierarchized following some pseudo-semantic rules::
 
