@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dgonz64/redux-form-auto.svg?branch=master)](https://travis-ci.org/dgonz64/redux-form-auto)
+
 # redux-form-auto
 
 This library allows your React application to automatically generate forms and validation code using [ReduxForm](https://github.com/erikras/redux-form/) for state management. The form and validations are generated following a schema inspired by [SimpleSchema](https://github.com/aldeed/simple-schema-js).
