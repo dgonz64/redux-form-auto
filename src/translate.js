@@ -1,5 +1,4 @@
 import deepExtend from 'deep-extend'
-import { trPath } from './utils'
 
 let translations = {}
 
@@ -98,19 +97,6 @@ export const setLanguage = (lang) => {
 export const addTranslations = (lang) => {
   translations = deepExtend(translations, lang)
 }
-
-/**
- * Multipurpose semantic-ish translation.
- *
- * @param {string} model Object name, usually what
- *    you pass as the first parameter when you create
- *    the schema.
- * @param {string} field Field name
- * @param {string} op Thing that varies based on
- *    the type.
- */
-export const trModel = (model, field, op) =>
-  tr(trPath(model, field, op))
 
 /**
  * Sets the translation engine that responds to tr().

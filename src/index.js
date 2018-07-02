@@ -7,9 +7,11 @@ export {
   addTranslations,
   setTranslator,
   tr,
-  trModel
 } from './translate'
-export { setLanguageByName } from './translation_utils'
+export {
+  setLanguageByName,
+  trModel
+} from './translation_utils'
 export {
   setSkin,
   addSkinType,

@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react'
 import { Field } from 'redux-form'
 
-import { trModel } from '../../translate'
+import { trModel } from '../../translation_utils'
 
 export const mapRadioOptions = ({
   name,

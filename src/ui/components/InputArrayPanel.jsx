@@ -4,7 +4,8 @@ import { Panel } from './Panel'
 import { Button } from './Button'
 import { renderLectures } from './renderLectures'
 
-import { tr, trModel } from '../../translate'
+import { tr } from '../../translate'
+import { trModel } from '../../translation_utils'
 
 const renderItemHeader = ({
   onRemove,

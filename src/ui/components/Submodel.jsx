@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Panel } from './Panel'
 import { renderInputs } from '../componentRender'
-import { trModel } from '../../translate'
+import { trModel } from '../../translation_utils'
 
 export const Submodel = ({
   name,

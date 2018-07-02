@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 
-import { trModel } from '../../translate'
+import { trModel } from '../../translation_utils'
 import { arrLast } from '../../utils'
 
 class InputBase extends Component {

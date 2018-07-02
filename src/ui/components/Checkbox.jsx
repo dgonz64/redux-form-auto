@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react'
-import { trModel } from '../../translate'
+import { trModel } from '../../translation_utils'
 import classnames from 'classnames'
 
 export class Checkbox extends PureComponent {
