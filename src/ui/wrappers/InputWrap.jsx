@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
+import classnames from 'classnames'
 
 import { trModel } from '../../translation_utils'
 import { arrLast } from '../../utils'
@@ -25,6 +26,7 @@ class InputBase extends Component {
       inline,
       type,
       autoFocus,
+      className,
       schemaTypeName,
       onKeyDown,
       onKeyPress,
@@ -57,6 +59,7 @@ class InputBase extends Component {
     const label = typeof labelOverride != 'undefined' ?
       labelOverride : trModel(schemaTypeName, fieldName, '_field')
     const placeholder = noWrap ? label : null
+    const inputClasses = classnames('form-control', className)
 
     return (
       <$wrapper
@@ -69,7 +72,7 @@ class InputBase extends Component {
         elementOnly={noWrap}
       >
         <$input
-          className="form-control"
+          className={inputClasses}
           type={type || 'text'}
           onKeyDown={onKeyDown}
           onKeyPress={onKeyPress}
