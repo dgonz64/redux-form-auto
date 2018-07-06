@@ -17,5 +17,6 @@ export {
   setSkin,
   addSkinType,
   renderInput,
-  renderInputs
+  renderInputs,
+  FieldPropsOverride
 } from './ui/componentRender'

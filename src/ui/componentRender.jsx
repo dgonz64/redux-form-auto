@@ -1,9 +1,33 @@
-import React from 'react'
+import React, {
+  PureComponent,
+  Children
+} from 'react'
 
 import { schemaTypeEx } from '../utils'
 import { defaultSkin } from './defaultSkin'
 
 export let components = defaultSkin
+
+/**
+ * Allows to specify extra props for a field in runtime.
+ *
+ * You should specify at least the name.
+ */
+export class FieldPropsOverride extends PureComponent {}
+
+/**
+ * Searches in children to find overrides.
+ */
+const searchForOverrides = (name, children = []) => {
+  const childrenArr = Children.map(children, child => child)
+
+  return childrenArr.reduce((override, child) => {
+    if ((child.type == FieldPropsOverride) && child.props.name == name)
+      return child.props
+    else
+      return override
+  }, {})
+}
 
 /**
  * Renders a single field.
@@ -26,6 +50,7 @@ export const renderInput = ({
     required
   },
   parent,
+  children,
   schemaTypeName,
   config = {},
   ...rest
@@ -44,7 +69,8 @@ export const renderInput = ({
       fieldSchema,
       schemaTypeName,
       config,
-      ...rest
+      ...rest,
+      ...searchForOverrides(useField, children)
     }
 
     const { props } = control
@@ -78,6 +104,7 @@ export const renderInput = ({
 export const renderInputs = ({
   schema,
   config = {},
+  children,
   ...rest
 }) => {
   const schemaDef = schema.getSchema()
@@ -87,6 +114,7 @@ export const renderInputs = ({
       ...rest,
       field,
       config,
+      children,
       fieldSchema: schemaDef[field],
       schemaTypeName: schema.getType()
     })
