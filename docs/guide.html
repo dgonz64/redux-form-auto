@@ -461,6 +461,28 @@ object about the results.</p>
 </tbody>
 </table>
 </div>
+<div class="section" id="field-props-override">
+<h2>Field props override<a class="headerlink" href="#field-props-override" title="Permalink to this headline">¶</a></h2>
+<p>You can override field props individually. You can do this with a component called <code class="docutils literal notranslate"><span class="pre">FieldPropsOverride</span></code>. This is useful when you want to create an special field with some functionality that forces you to provide an event handler. Let’s see an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Autoform</span><span class="p">,</span> <span class="n">FieldPropsOverride</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto&#39;</span>
+
+<span class="n">const</span> <span class="n">Component</span> <span class="o">=</span> <span class="p">({</span> <span class="n">onKeyDown</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="o">&lt;</span><span class="n">Autoform</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="n">client</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">FieldPropsOverride</span>
+      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span>
+      <span class="n">onKeyDown</span><span class="o">=</span><span class="p">{</span><span class="n">onKeyDown</span><span class="p">}</span>
+    <span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">Autoform</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The name should specify the path without taking into account array order. For example, if a <code class="docutils literal notranslate"><span class="pre">pet</span></code> serves as an schema array for an <code class="docutils literal notranslate"><span class="pre">owner</span></code> and you want to override every pet name from <code class="docutils literal notranslate"><span class="pre">pets</span></code> field (array), you should use <code class="docutils literal notranslate"><span class="pre">pets.name</span></code> as the <code class="docutils literal notranslate"><span class="pre">name</span></code> prop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">FieldPropsOverride</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pets.name&quot;</span>
+  <span class="o">...</span><span class="n">overrides</span><span class="o">...</span>
+<span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -482,6 +504,7 @@ object about the results.</p>
 <li><a class="reference internal" href="#schema-class">Schema class</a></li>
 <li><a class="reference internal" href="#autoform-component">Autoform component</a></li>
 <li><a class="reference internal" href="#config">Config</a></li>
+<li><a class="reference internal" href="#field-props-override">Field props override</a></li>
 </ul>
 </li>
 </ul>

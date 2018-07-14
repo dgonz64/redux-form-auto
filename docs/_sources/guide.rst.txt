@@ -133,3 +133,25 @@ Attribute  Meaning
 horizontal If true, labels are to the left of the inputs.
 arrayMode  ``'table'`` or ``'panels'`` depending on wanted array field format.
 ========== ===================================================================
+
+Field props override
+--------------------
+
+You can override field props individually. You can do this with a component called ``FieldPropsOverride``. This is useful when you want to create an special field with some functionality that forces you to provide an event handler. Let's see an example::
+
+  import { Autoform, FieldPropsOverride } from 'redux-form-auto'
+
+  const Component = ({ onKeyDown }) =>
+    <Autoform schema={client}>
+      <FieldPropsOverride
+        name="name"
+        onKeyDown={onKeyDown}
+      />
+    </Autoform>
+
+The name should specify the path without taking into account array order. For example, if a ``pet`` serves as an schema array for an ``owner`` and you want to override every pet name from ``pets`` field (array), you should use ``pets.name`` as the ``name`` prop::
+
+    <FieldPropsOverride
+      name="pets.name"
+      ...overrides...
+    />
