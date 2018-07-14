@@ -19,7 +19,7 @@ const custom = new Schema('custom', {
   }
 })
 
-test('custom type with UI', () => {
+test('be able to override specific field props', () => {
   const app = mount(
     <App>
       <Autoform schema={custom}>
@@ -31,6 +31,35 @@ test('custom type with UI', () => {
     </App>
   )
 
+  // console.log(app.html())
+
+  const form = app.find('form')
+  const inputs = form.find('input')
+
+  expect(inputs).toHaveLength(1)
+  const input = inputs.first()
+  expect(input.hasClass('custom-class')).toBe(true)
+})
+
+const parent = new Schema('parent', {
+  child: {
+    type: [custom]
+  }
+})
+
+test('be able to reference child elements', () => {
+  const app = mount(
+    <App>
+      <Autoform schema={parent}>
+        <FieldPropsOverride
+          name="child.name"
+          className="custom-class"
+        />
+      </Autoform>
+    </App>
+  )
+
+  app.find('span.glyphicon-plus').simulate('click')
   // console.log(app.html())
 
   const form = app.find('form')

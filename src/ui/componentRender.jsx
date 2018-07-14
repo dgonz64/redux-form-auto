@@ -2,6 +2,7 @@ import React, {
   PureComponent,
   Children
 } from 'react'
+import PropTypes from 'prop-types'
 
 import { schemaTypeEx } from '../utils'
 import { defaultSkin } from './defaultSkin'
@@ -10,19 +11,24 @@ export let components = defaultSkin
 
 /**
  * Allows to specify extra props for a field in runtime.
- *
- * You should specify at least the name.
  */
 export class FieldPropsOverride extends PureComponent {}
+
+FieldPropsOverride.propTypes = {
+  name: PropTypes.string.isRequired
+}
 
 /**
  * Searches in children to find overrides.
  */
-const searchForOverrides = (name, children = []) => {
+const searchForOverrides = (parent, name, children = []) => {
   const childrenArr = Children.map(children, child => child)
 
   return childrenArr.reduce((override, child) => {
-    if ((child.type == FieldPropsOverride) && child.props.name == name)
+    const childName = child.props.name
+    const compositeName = parent ? `${parent}.${name}` : name
+
+    if ((child.type == FieldPropsOverride) && compositeName == childName)
       return child.props
     else
       return override
@@ -50,7 +56,8 @@ export const renderInput = ({
     required
   },
   parent,
-  children,
+  containerField,
+  propOverrides,
   schemaTypeName,
   config = {},
   ...rest
@@ -69,8 +76,10 @@ export const renderInput = ({
       fieldSchema,
       schemaTypeName,
       config,
+      containerField,
+      propOverrides,
       ...rest,
-      ...searchForOverrides(useField, children)
+      ...searchForOverrides(containerField, useField, propOverrides)
     }
 
     const { props } = control
@@ -105,16 +114,18 @@ export const renderInputs = ({
   schema,
   config = {},
   children,
+  propOverrides,
   ...rest
 }) => {
   const schemaDef = schema.getSchema()
   const schemaKeys = Object.keys(schemaDef)
+
   return schemaKeys.map(field =>
     renderInput({
       ...rest,
       field,
       config,
-      children,
+      propOverrides: propOverrides || children,
       fieldSchema: schemaDef[field],
       schemaTypeName: schema.getType()
     })

@@ -36,6 +36,7 @@ const handleRemove = (fields, idx) => {
 export const InputArrayWrap = ({
   name,
   children,
+  propOverrides,
   newObject,
   arrayHandler,
   ...rest

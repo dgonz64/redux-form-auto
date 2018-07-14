@@ -41,7 +41,9 @@ export const defaultSkin = {
     props: props => {
       const {
         config = {},
-        fieldSchema: { type }
+        propOverrides,
+        fieldSchema: { type },
+        name
       } = props
 
       const { arrayMode } = config
@@ -51,7 +53,12 @@ export const defaultSkin = {
       return {
         ...props,
         arrayHandler,
-        children: renderInputs({ schema: type[0], config })
+        children: renderInputs({
+          schema: type[0],
+          config,
+          propOverrides,
+          containerField: name
+        })
       }
     }
   },
