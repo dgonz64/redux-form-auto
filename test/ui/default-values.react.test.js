@@ -67,3 +67,22 @@ test('embedded object can have default values', () => {
   const input = inputs.first()
   expect(input.prop('value')).toBe('tomato')
 })
+
+test('array objects can have default values', () => {
+  const app = mount(
+    <App>
+      <Autoform schema={multiparenter} />
+    </App>
+  )
+
+  app.find('span.glyphicon-plus').simulate('click')
+
+  // console.log(app.html())
+
+  const form = app.find('form')
+  const inputs = form.find('input')
+
+  expect(inputs).toHaveLength(1)
+  const input = inputs.first()
+  expect(input.prop('value')).toBe('tomato')
+})
