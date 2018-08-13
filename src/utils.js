@@ -162,3 +162,28 @@ export const trPath = (model, field, op) => {
   else
     return ['models', model, field, op].join('.')
 }
+
+/**
+ * Merges the (passed or not) initialValues with
+ * the defaultValue's found in the schema.
+ *
+ * @param {object} initialValues (optional) Initial values
+ *    passed to the form.
+ * @param {Schema} schema Schema to hunt for defaults
+ *
+ * @returns {object} Merged initial values to simulate
+ *    defaults.
+ */
+export const mergeInitialValues = (initialValues = {}, schema) => {
+  const schemaDef = schema.getSchema()
+  const fields = Object.keys(schemaDef)
+  const values = Object.assign({}, initialValues)
+
+  return fields.reduce((newDefaults, fieldName) => {
+    const fieldDef = schemaDef[fieldName]
+    if (('defaultValue' in fieldDef) && !(fieldName in newDefaults))
+      newDefaults[fieldName] = fieldDef.defaultValue
+
+    return newDefaults
+  }, values)
+}

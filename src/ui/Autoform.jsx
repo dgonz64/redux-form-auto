@@ -5,6 +5,7 @@ import {
   components,
   renderInputs
 } from './componentRender'
+import { mergeInitialValues } from '../utils'
 
 const Form = components.form.component
 const ConnectedForm = reduxForm()(Form)
@@ -25,6 +26,7 @@ export class Autoform extends Component {
       noConnect,
       formProps,
       elementProps,
+      initialValues,
       ...rest
     } = this.props
 
@@ -42,11 +44,14 @@ export class Autoform extends Component {
 
     const $formComponent = noConnect ? Form : ConnectedForm
 
+    const mergedInitial = mergeInitialValues(initialValues, schema)
+
     return (
       <$formComponent
         form={providedForm}
         validate={errorer}
         warn={warner}
+        initialValues={mergedInitial}
         {...rest}
         {...formProps}
       >
