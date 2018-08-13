@@ -184,6 +184,17 @@ export const mergeInitialValues = (initialValues = {}, schema) => {
     if (('defaultValue' in fieldDef) && !(fieldName in newDefaults))
       newDefaults[fieldName] = fieldDef.defaultValue
 
+    if (fieldDef.type instanceof Schema) {
+      const instanceCur = newDefaults[fieldName] || {}
+
+      const instanceDefs = mergeInitialValues(
+        instanceCur,
+        fieldDef.type
+      )
+
+      newDefaults[fieldName] = instanceDefs
+    }
+
     return newDefaults
   }, values)
 }
