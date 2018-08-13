@@ -29,7 +29,7 @@ test('fields can have default values', () => {
     </App>
   )
 
-  console.log(app.html())
+  // console.log(app.html())
 
   const form = app.find('form')
   const inputs = form.find('input')
