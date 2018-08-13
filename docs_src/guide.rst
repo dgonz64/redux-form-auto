@@ -155,3 +155,15 @@ The name should specify the path without taking into account array order. For ex
       name="pets.name"
       ...overrides...
     />
+
+Default values
+--------------
+
+Fields can have default values. Add ``defaultValue`` to field's schema specification like that::
+
+  const schema = new Schema('example', {
+    name: {
+      type: 'string',
+      defaultValue: 'John Doe'
+    }
+  })

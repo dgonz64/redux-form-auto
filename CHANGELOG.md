@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.10 ()
+
+### Added
+
+- Fields can have default values
+
 ## 1.0.9 (14/07/2018)
 
 ### Added
