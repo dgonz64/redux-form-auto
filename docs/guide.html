@@ -483,6 +483,18 @@ object about the results.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="default-values">
+<h2>Default values<a class="headerlink" href="#default-values" title="Permalink to this headline">¶</a></h2>
+<p>Fields can have default values. Add <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> to field’s schema specification like that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+    <span class="n">defaultValue</span><span class="p">:</span> <span class="s1">&#39;John Doe&#39;</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 
@@ -505,6 +517,7 @@ object about the results.</p>
 <li><a class="reference internal" href="#autoform-component">Autoform component</a></li>
 <li><a class="reference internal" href="#config">Config</a></li>
 <li><a class="reference internal" href="#field-props-override">Field props override</a></li>
+<li><a class="reference internal" href="#default-values">Default values</a></li>
 </ul>
 </li>
 </ul>
