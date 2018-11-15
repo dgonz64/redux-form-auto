@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.11 (15/11/2018)
+
+### Changed
+
+- Force merge dependency in order to avoid security concern.
+
 ## 1.0.10 (13/05/2018)
 
 ### Added
