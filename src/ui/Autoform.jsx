@@ -27,6 +27,7 @@ export class Autoform extends Component {
       formProps,
       elementProps,
       initialValues,
+      children,
       ...rest
     } = this.props
 
@@ -56,6 +57,7 @@ export class Autoform extends Component {
         {...formProps}
       >
         {renderInputs({ schema, ...rest, ...elementProps })}
+        {children}
       </$formComponent>
     )
   }
@@ -91,5 +93,10 @@ Autoform.propTypes = {
   /**
    * Called on submit with the values of the form.
    */
-  onSubmit: PropTypes.func
+  onSubmit: PropTypes.func,
+
+  /**
+   * Children will be rendered inside the form
+   */
+  children: PropTypes.node,
 }
