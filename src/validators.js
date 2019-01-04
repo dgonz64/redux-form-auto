@@ -10,7 +10,8 @@ import {
 export const specialTypes = {
   integer: value => value && !Number.isInteger(value),
   select: value => value && typeof value != 'string',
-  radios: value => value && typeof value != 'string'
+  radios: value => value && typeof value != 'string',
+  password: value => value && typeof value != 'string'
 }
 
 /**
