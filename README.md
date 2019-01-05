@@ -11,9 +11,9 @@ At the moment the *skins* available are:
 
 More skins will be added. [Join me](#help-wanted)!
 
-## Try and use a demo
+## Play with a demo
 
-* [Bootstrap 3](https://dgonz64.github.io/redux-form-auto-bootstrap3/demo.html).
+* [Bootstrap 3](https://dgonz64.github.io/redux-form-auto/demo.html)
 * [Antd](https://dgonz64.github.io/redux-form-auto-antd/demo/)
 
 ## Migration from 1.0.x
@@ -63,7 +63,7 @@ Here we are saying that a `client` is required to have a name and providing its 
 `<Autoform />` React component will generate connected inputs including translatable label, proper input types and error/warning messages:
 
 ```javascript
-    import { Autoform } from 'redux-from-auto'
+    import { Autoform } from 'redux-from-auto-<skin>'
     import { client } from './models/client'
 
     const MyForm = ({ onSubmit }) =>
@@ -78,7 +78,7 @@ Form will be validated following the rules set in the schema, beginning with the
 It also allows you to build arrays from other schemas as ReduxForm's [FieldArray](https://redux-form.com/7.3.0/docs/api/fieldarray.md/). You just toss an array with another schema from elsewhere as first element and `Autoform` will allow you to add and remove elements:
 
 ```javascript
-    import { Schema } from 'redux-form-auto'
+    import { Schema } from 'redux-form-auto-<skin>'
     import { client } from './client'
 
     export const company = new Schema('company', {
