@@ -1,13 +1,11 @@
 export { Schema } from './schema'
 export { Autoform } from './ui/Autoform'
-export { InputWrap } from './ui/wrappers/InputWrap'
-export { InputArrayWrap } from './ui/wrappers/InputArrayWrap'
 export { translatable } from './validation'
 export { addValidator } from './validators'
 export {
   addTranslations,
   setTranslator,
-  tr,
+  tr
 } from './translate'
 export {
   setLanguageByName,
@@ -20,3 +18,4 @@ export {
   renderInputs,
   FieldPropsOverride
 } from './ui/componentRender'
+export * from './utils'

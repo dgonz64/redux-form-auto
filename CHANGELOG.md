@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+### Changed
+
+- Split the demo and documentation out of package to have cleaner concerns. Now Bootstrap 3 skin is in [redux-form-auto-bootstrap3](https://github.com/dgonz64/redux-form-auto-bootstrap3)
+- Downgraded babel to 6 in order to be able to work locally with the package. Please open an issue if this is a problem for you.
+
 ## 1.0.11 (15/11/2018)
 
 ### Changed

@@ -1,14 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { reduxForm } from 'redux-form'
-import {
-  components,
-  renderInputs
-} from './componentRender'
+import { getComponents, renderInputs } from './componentRender'
 import { mergeInitialValues } from '../utils'
-
-const Form = components.form.component
-const ConnectedForm = reduxForm()(Form)
 
 /**
  * Creates a form using the current skin. The form
@@ -16,6 +10,23 @@ const ConnectedForm = reduxForm()(Form)
  * errors needed for it to function.
  */
 export class Autoform extends Component {
+  constructor(props) {
+    super(props)
+
+    // Allow for the skin to be set up
+    const components = getComponents()
+    const Form = components.form.component
+    this.ConnectedForm = reduxForm()(Form)
+  }
+
+  /**
+   * Call submit in order to submit imperativelly. onSubmit
+   * will be called with the form data.
+   */
+  submit() {
+    this.formComponent.submit()
+  }
+
   render() {
     const {
       form,
@@ -43,7 +54,7 @@ export class Autoform extends Component {
         schema.getWarningValidator()
         : schema.getTranslatedWarningValidator())
 
-    const $formComponent = noConnect ? Form : ConnectedForm
+    const $formComponent = noConnect ? Form : this.ConnectedForm
 
     const mergedInitial = mergeInitialValues(initialValues, schema)
 
@@ -55,6 +66,7 @@ export class Autoform extends Component {
         initialValues={mergedInitial}
         {...rest}
         {...formProps}
+        ref={el => this.formComponent = el}
       >
         {renderInputs({ schema, ...rest, ...elementProps })}
         {children}

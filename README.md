@@ -4,15 +4,32 @@
 
 This library allows your React application to automatically generate forms and validation code using [ReduxForm](https://github.com/erikras/redux-form/) for state management. The form and validations are generated following a schema inspired by [SimpleSchema](https://github.com/aldeed/simple-schema-js).
 
-At the moment the only *skin* included is a stylable set of css's that happens to be compatible with [Bootstrap 3](http://getbootstrap.com/docs/3.3/). There's also an antd skin [here](https://github.com/dgonz64/redux-form-auto-antd). More skins will be added. [Join me](#help-wanted)!
+At the moment the *skins* available are:
 
-## Watch a demo
+* [Bootstrap 3](https://github.com/dgonz64/redux-form-auto-bootstrap3).
+* [Antd](https://github.com/dgonz64/redux-form-auto-antd).
 
-[Demo](https://dgonz64.github.io/redux-form-auto/demo.html)
+More skins will be added. [Join me](#help-wanted)!
+
+## Try and use a demo
+
+* [Bootstrap 3](https://dgonz64.github.io/redux-form-auto-bootstrap3/demo.html).
+* [Antd](https://dgonz64.github.io/redux-form-auto-antd/demo/)
+
+## Migration from 1.0.x
+
+The library doesn't include bootstrap 3 styles by default. If you want to use bootstrap 3 now you have to include its npm, see installation:
 
 ## Installation
 
-    $ npm install redux-form-auto --save
+Choose the skin and import the corresponding package
+
+    $ npm install redux-form-auto-bootstrap3 --save
+
+Current skins:
+
+* redux-form-auto-bootstrap3
+* redux-form-auto-antd
 
 ## Usage
 
@@ -21,7 +38,9 @@ At the moment the only *skin* included is a stylable set of css's that happens t
 Write a schema for each model you have:
 
 ```javascript
-    import { Schema } from 'redux-form-auto'
+    import { Schema } from 'redux-form-auto-bootstrap3'
+    // ... or ...
+    import { Schema } from 'redux-form-auto-antd'
 
     export const client = new Schema('client', {
       name: {
@@ -36,6 +55,8 @@ Write a schema for each model you have:
 ```
 
 Here we are saying that a `client` is required to have a name and providing its allowed length. Also client has age and it's a number.
+
+[Here](https://dgonz64.github.io/redux-form-auto/guide.html) you can find the complete list of types and validators available.
 
 #### 2. Render a form
 
@@ -54,7 +75,7 @@ Here we are saying that a `client` is required to have a name and providing its 
 
 Form will be validated following the rules set in the schema, beginning with the type itself.
 
-It also allows you to build arrays of other schemas as ReduxForm's [FieldArray](https://redux-form.com/7.3.0/docs/api/fieldarray.md/). You just toss an array with another schema from elsewhere as first element and `Autoform` will allow you to add and remove elements:
+It also allows you to build arrays from other schemas as ReduxForm's [FieldArray](https://redux-form.com/7.3.0/docs/api/fieldarray.md/). You just toss an array with another schema from elsewhere as first element and `Autoform` will allow you to add and remove elements:
 
 ```javascript
     import { Schema } from 'redux-form-auto'
@@ -68,7 +89,11 @@ It also allows you to build arrays of other schemas as ReduxForm's [FieldArray](
     })
 ```
 
-Read the [documentation](https://dgonz64.github.io/redux-form-auto/) to find out what else you can do.
+Read the documentation to find out what else you can do:
+
+## [Documentation](https://dgonz64.github.io/redux-form-auto/)
+
+You can also take [the demo project](https://github.com/dgonz64/redux-form-auto-bootstrap3-demo) as an example of use.
 
 ## Rationale
 

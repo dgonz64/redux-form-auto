@@ -1,0 +1,516 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Guide &#8212; redux-form-auto  documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Types" href="types.html" />
+    <link rel="prev" title="Welcome to Redux Form Auto documentation!" href="index.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>redux-form-auto  documentation</span></a></h1>
+        <h2 class="heading"><span>Guide</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to Redux Form Auto documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="types.html">Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="guide">
+<h1>Guide<a class="headerlink" href="#guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="types">
+<h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<p>Each schema can be regarded as a Rails model or a database table. You can store them anywhere, for example in a module:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Schema</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto&#39;</span>
+
+<span class="n">export</span> <span class="n">const</span> <span class="n">computer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;computers&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="o">/*</span> <span class="o">...</span><span class="n">schema</span><span class="o">...</span> <span class="o">*/</span> <span class="p">})</span>
+</pre></div>
+</div>
+<p>Each first level entry in the schema object represents the fields in the form or the columns in the database analogy. To configure the field you use another object. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span> <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span> <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>These are the types a field can be:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="17%" />
+<col width="38%" />
+<col width="44%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type</th>
+<th class="head">Valid when…</th>
+<th class="head">Input control</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>string</td>
+<td>Value is a string</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;text&quot;</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>number</td>
+<td>Value is a number</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;number&quot;</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>integer</td>
+<td>Value is an integer</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>[&lt;schema&gt;]</td>
+<td>Each array item is valid</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;FieldArray</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>&lt;schema&gt;</td>
+<td>Value follows schema</td>
+<td>Renders as submodel</td>
+</tr>
+<tr class="row-odd"><td>select</td>
+<td>Value belongs to options</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;select</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>radios</td>
+<td>Value belongs to options</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;Radio</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td>boolean</td>
+<td>Value is boolean</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;checkbox</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>You can specify the type as a constructor. There’s not an easily measurable advantage. Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="nb">type</span><span class="p">:</span> <span class="n">String</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>See a list of the types here.</p>
+</div>
+<div class="section" id="validators">
+<h2>Validators<a class="headerlink" href="#validators" title="Permalink to this headline">¶</a></h2>
+<p>In addition to the type, you can specify some other validation rules.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="10%" />
+<col width="76%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Validation</th>
+<th class="head">Type</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>minChildren</td>
+<td>number</td>
+<td>Minimum amount of children an array field can have</td>
+</tr>
+<tr class="row-odd"><td>maxChildren</td>
+<td>number</td>
+<td>Maximum amount of children an array field can have</td>
+</tr>
+<tr class="row-even"><td>min</td>
+<td>number</td>
+<td>Minimum length of the value</td>
+</tr>
+<tr class="row-odd"><td>max</td>
+<td>number</td>
+<td>Maximum length of the value</td>
+</tr>
+<tr class="row-even"><td>required</td>
+<td>boolean</td>
+<td>The value can’t be empty or undefined</td>
+</tr>
+<tr class="row-odd"><td>validation</td>
+<td>function</td>
+<td>Function that takes the value and entry and returns validity</td>
+</tr>
+<tr class="row-even"><td>accept</td>
+<td>regex</td>
+<td>Regex. The value matches the regex</td>
+</tr>
+<tr class="row-odd"><td>reject</td>
+<td>regex</td>
+<td>The value is not matching the regex</td>
+</tr>
+<tr class="row-even"><td>options</td>
+<td>array</td>
+<td>For the select like inputs. Value should be in options</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="scope">
+<h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
+<p>The validation rules can appear in two different places:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">warning</span></code> object</li>
+<li><code class="docutils literal notranslate"><span class="pre">error</span></code> object</li>
+</ul>
+<div class="section" id="warning">
+<h3>Warning<a class="headerlink" href="#warning" title="Permalink to this headline">¶</a></h3>
+<p>The rules contained in the warning attribute doesn’t invalidate the form but are still printed in the form field if the skin supports it:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+    <span class="n">warning</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nb">max</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="error">
+<h3>Error<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">error</span></code>, on the other hand, influences validity:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+    <span class="n">error</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nb">max</span><span class="p">:</span> <span class="mi">20</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Putting the validators directly is the same as using the error object. The latter is just clearer and makes prettier schemas too.</p>
+</div>
+</div>
+<div class="section" id="schema-class">
+<h2>Schema class<a class="headerlink" href="#schema-class" title="Permalink to this headline">¶</a></h2>
+<p>The schema establishes the validation and is also read by <code class="docutils literal notranslate"><span class="pre">&lt;Autoform</span> <span class="pre">/&gt;</span></code> to generate inputs.</p>
+<p>The instance can be stored anywhere, like your own model object or a module. At the moment it doesn’t change over time.</p>
+<dl class="class">
+<dt id="Schema">
+<em class="property">class </em><code class="descname">Schema</code><span class="sig-paren">(</span><em>typeName</em>, <em>schema</em><span class="sig-paren">)</span><a class="headerlink" href="#Schema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the schema specifications and automatically
+creates validation code for errors and warnings, both
+translated and untranslated.</p>
+<p>Creates a Schema from the specification.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>typeName</strong> (<em>string</em>) – Name of the model being created. It can be chosen freely.</li>
+<li><strong>schema</strong> (<em>object</em>) – Schema specification.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="function">
+<dt id="Schema.getErrorValidator">
+<code class="descclassname">Schema.</code><code class="descname">getErrorValidator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getErrorValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets error validator that produces a translatable
+tree with the found errors.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>validator</strong> – Drop in validator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getFieldSchema">
+<code class="descclassname">Schema.</code><code class="descname">getFieldSchema</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getFieldSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns schema specification for a field.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>object</strong> – Field specification.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getSchema">
+<code class="descclassname">Schema.</code><code class="descname">getSchema</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getSchema" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the schema specification.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>object</strong> – Schema specification.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getTranslatedErrorValidator">
+<code class="descclassname">Schema.</code><code class="descname">getTranslatedErrorValidator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getTranslatedErrorValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the translated errors validator for direct
+use with ReduxForm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>validator</strong> – Drop in validator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getTranslatedWarningValidator">
+<code class="descclassname">Schema.</code><code class="descname">getTranslatedWarningValidator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getTranslatedWarningValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets the translated warnings validator for direct
+use with ReduxForm.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>validator</strong> – Drop in validator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getType">
+<code class="descclassname">Schema.</code><code class="descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the schema name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>string</strong> – Schema name (also called <code class="docutils literal notranslate"><span class="pre">typeName</span></code>).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.getWarningValidator">
+<code class="descclassname">Schema.</code><code class="descname">getWarningValidator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#Schema.getWarningValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Gets warning validator that produces a translatable
+tree with the found warnings.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>validator</strong> – Drop in validator</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.isValid">
+<code class="descclassname">Schema.</code><code class="descname">isValid</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="headerlink" href="#Schema.isValid" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the document is valid following
+the schema.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><strong>boolean</strong> – Validity</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.validate">
+<code class="descclassname">Schema.</code><code class="descname">validate</code><span class="sig-paren">(</span><em>doc</em><span class="sig-paren">)</span><a class="headerlink" href="#Schema.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates a document and returns an information
+object about the results.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>doc</strong> (<em>object</em>) – Document to validate</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>validationResult</strong> –</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="Schema.validateType">
+<code class="descclassname">Schema.</code><code class="descname">validateType</code><span class="sig-paren">(</span><em>doc</em>, <em>validationType</em><span class="sig-paren">)</span><a class="headerlink" href="#Schema.validateType" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validates using the specified validator type
+(error or warning)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first simple">
+<li><strong>doc</strong> (<em>object</em>) – Document to validate</li>
+<li><strong>validationType</strong> (<em>string</em>) – ‘error’ or ‘warning’</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><strong>object</strong> – Validation tree</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="autoform-component">
+<h2>Autoform component<a class="headerlink" href="#autoform-component" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;Autoform</span> <span class="pre">/&gt;</span></code> component accepts the following props</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="14%" />
+<col width="19%" />
+<col width="68%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Prop</th>
+<th class="head">Type</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>schema</td>
+<td>Schema instance</td>
+<td>Schema used to build the form</td>
+</tr>
+<tr class="row-odd"><td>form</td>
+<td>string</td>
+<td>(optional) Name for the form, overrides schema’s name</td>
+</tr>
+<tr class="row-even"><td>noErrors</td>
+<td>boolean</td>
+<td>(optional) Disables error reporting</td>
+</tr>
+<tr class="row-odd"><td>noWarns</td>
+<td>boolean</td>
+<td>(optional) Disables warnings</td>
+</tr>
+<tr class="row-even"><td>noConnect</td>
+<td>boolean</td>
+<td>(optional) Don’t connect to store. You are in charge</td>
+</tr>
+<tr class="row-odd"><td>noTranslate</td>
+<td>boolean</td>
+<td>(optional) Don’t translate the form</td>
+</tr>
+<tr class="row-even"><td>onSubmit</td>
+<td>function</td>
+<td>(optional) Code called when submitting</td>
+</tr>
+<tr class="row-odd"><td>config</td>
+<td>object</td>
+<td>(optional) Form config, see below</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="config">
+<h2>Config<a class="headerlink" href="#config" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> prop is an object that has the following attributes</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="87%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Attribute</th>
+<th class="head">Meaning</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>horizontal</td>
+<td>If true, labels are to the left of the inputs.</td>
+</tr>
+<tr class="row-odd"><td>arrayMode</td>
+<td><code class="docutils literal notranslate"><span class="pre">'table'</span></code> or <code class="docutils literal notranslate"><span class="pre">'panels'</span></code> depending on wanted array field format.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="field-props-override">
+<h2>Field props override<a class="headerlink" href="#field-props-override" title="Permalink to this headline">¶</a></h2>
+<p>You can override field props individually. You can do this with a component called <code class="docutils literal notranslate"><span class="pre">FieldPropsOverride</span></code>. This is useful when you want to create an special field with some functionality that forces you to provide an event handler. Let’s see an example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Autoform</span><span class="p">,</span> <span class="n">FieldPropsOverride</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto&#39;</span>
+
+<span class="n">const</span> <span class="n">Component</span> <span class="o">=</span> <span class="p">({</span> <span class="n">onKeyDown</span> <span class="p">})</span> <span class="o">=&gt;</span>
+  <span class="o">&lt;</span><span class="n">Autoform</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="n">client</span><span class="p">}</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">FieldPropsOverride</span>
+      <span class="n">name</span><span class="o">=</span><span class="s2">&quot;name&quot;</span>
+      <span class="n">onKeyDown</span><span class="o">=</span><span class="p">{</span><span class="n">onKeyDown</span><span class="p">}</span>
+    <span class="o">/&gt;</span>
+  <span class="o">&lt;/</span><span class="n">Autoform</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>The name should specify the path without taking into account array order. For example, if a <code class="docutils literal notranslate"><span class="pre">pet</span></code> serves as an schema array for an <code class="docutils literal notranslate"><span class="pre">owner</span></code> and you want to override every pet name from <code class="docutils literal notranslate"><span class="pre">pets</span></code> field (array), you should use <code class="docutils literal notranslate"><span class="pre">pets.name</span></code> as the <code class="docutils literal notranslate"><span class="pre">name</span></code> prop:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">FieldPropsOverride</span>
+  <span class="n">name</span><span class="o">=</span><span class="s2">&quot;pets.name&quot;</span>
+  <span class="o">...</span><span class="n">overrides</span><span class="o">...</span>
+<span class="o">/&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-values">
+<h2>Default values<a class="headerlink" href="#default-values" title="Permalink to this headline">¶</a></h2>
+<p>Fields can have default values. Add <code class="docutils literal notranslate"><span class="pre">defaultValue</span></code> to field’s schema specification like that:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;example&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span>
+    <span class="n">defaultValue</span><span class="p">:</span> <span class="s1">&#39;John Doe&#39;</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="index.html">Welcome to Redux Form Auto documentation!</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="types.html">Types</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, David González.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Types &#8212; redux-form-auto  documentation</title>
+    <link rel="stylesheet" href="_static/haiku.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Translation" href="translations.html" />
+    <link rel="prev" title="Guide" href="guide.html" /> 
+  </head><body>
+      <div class="header" role="banner"><h1 class="heading"><a href="index.html">
+          <span>redux-form-auto  documentation</span></a></h1>
+        <h2 class="heading"><span>Types</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="guide.html">Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="translations.html">Translation</a>&#160;&#160;»
+        </p>
+
+      </div>
+      <div class="content">
+        
+        
+  <div class="section" id="types">
+<h1>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h1>
+<p>This is a list of the current types the Schema supports.</p>
+<div class="section" id="string-or-number">
+<h2>string or number<a class="headerlink" href="#string-or-number" title="Permalink to this headline">¶</a></h2>
+<p>Just a string or number field.</p>
+</div>
+<div class="section" id="array">
+<h2>array<a class="headerlink" href="#array" title="Permalink to this headline">¶</a></h2>
+<p>Specifies that the field is a list of objects that follows another schema. You enclose the schema instance in array brackets:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">pet</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;pet&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">name</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">String</span><span class="p">,</span>
+    <span class="n">error</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nb">max</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+
+<span class="n">const</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">pets</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="p">[</span><span class="n">pet</span><span class="p">],</span>
+    <span class="n">minChildren</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="n">maxChildren</span><span class="p">:</span> <span class="mi">4</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>Uses internally ReduxForm’s <code class="docutils literal notranslate"><span class="pre">FieldArray</span></code>. The form values will be the ones expected from <code class="docutils literal notranslate"><span class="pre">FieldArray</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">pets</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Needygreedy the cat&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Destroyer of couches&#39;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Subwoofer&#39;</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="schema">
+<h2>schema<a class="headerlink" href="#schema" title="Permalink to this headline">¶</a></h2>
+<p>You can put a schema inside another:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;owner&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">pet</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="n">pet</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<p>The values will be put inside an object, like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="n">pet</span><span class="p">:</span> <span class="p">{</span>
+    <span class="n">name</span><span class="p">:</span> <span class="s1">&#39;Sherlock Bones&#39;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="select">
+<h2>select<a class="headerlink" href="#select" title="Permalink to this headline">¶</a></h2>
+<p>Union rendered with a select element:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">const</span> <span class="n">pills</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;pills&#39;</span><span class="p">,</span> <span class="p">{</span>
+  <span class="n">color</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nb">type</span><span class="p">:</span> <span class="s1">&#39;select&#39;</span><span class="p">,</span>
+    <span class="n">options</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;blue&#39;</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="radios">
+<h2>radios<a class="headerlink" href="#radios" title="Permalink to this headline">¶</a></h2>
+<p>Like select but renders using radios.</p>
+</div>
+<div class="section" id="boolean">
+<h2>boolean<a class="headerlink" href="#boolean" title="Permalink to this headline">¶</a></h2>
+<p>Renders a checkbox.</p>
+</div>
+</div>
+
+
+      </div>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="guide.html">Guide</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="translations.html">Translation</a>&#160;&#160;»
+        </p>
+
+      </div>
+
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, David González.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

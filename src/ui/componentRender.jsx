@@ -5,9 +5,8 @@ import React, {
 import PropTypes from 'prop-types'
 
 import { schemaTypeEx } from '../utils'
-import { defaultSkin } from './defaultSkin'
 
-export let components = defaultSkin
+export let components
 
 /**
  * Allows to specify extra props for a field in runtime.
@@ -28,7 +27,7 @@ const searchForOverrides = (parent, name, children = []) => {
     const childName = child.props.name
     const compositeName = parent ? `${parent}.${name}` : name
 
-    if ((child.type == FieldPropsOverride) && compositeName == childName)
+    if (child.type == FieldPropsOverride && compositeName == childName)
       return child.props
     else
       return override
@@ -152,3 +151,5 @@ export const setSkin = skin => {
 export const addSkinType = (typeName, rendering) => {
   components[typeName] = rendering
 }
+
+export const getComponents = () => components
