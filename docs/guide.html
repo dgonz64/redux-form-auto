@@ -38,10 +38,15 @@
         
   <div class="section" id="guide">
 <h1>Guide<a class="headerlink" href="#guide" title="Permalink to this headline">¶</a></h1>
+<p>Guide uses bootstrap3 skin in the examples. It can be substituted with your skin:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/dgonz64/redux-form-auto-bootstrap3">redux-form-auto-bootstrap3</a></li>
+<li><a class="reference external" href="https://github.com/dgonz64/redux-form-auto-antd">redux-form-auto-antd</a></li>
+</ul>
 <div class="section" id="types">
 <h2>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
 <p>Each schema can be regarded as a Rails model or a database table. You can store them anywhere, for example in a module:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Schema</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Schema</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto-bootstrap3&#39;</span>
 
 <span class="n">export</span> <span class="n">const</span> <span class="n">computer</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Schema</span><span class="p">(</span><span class="s1">&#39;computers&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="o">/*</span> <span class="o">...</span><span class="n">schema</span><span class="o">...</span> <span class="o">*/</span> <span class="p">})</span>
 </pre></div>
@@ -57,7 +62,7 @@
 <colgroup>
 <col width="17%" />
 <col width="38%" />
-<col width="44%" />
+<col width="45%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Type</th>
@@ -97,6 +102,10 @@
 <tr class="row-odd"><td>boolean</td>
 <td>Value is boolean</td>
 <td><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;checkbox</span> <span class="pre">/&gt;</span></code></td>
+</tr>
+<tr class="row-even"><td>password</td>
+<td>Value is a string</td>
+<td><code class="docutils literal notranslate"><span class="pre">&lt;input</span> <span class="pre">type=&quot;password&quot;</span> <span class="pre">/&gt;</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -461,7 +470,7 @@ object about the results.</p>
 <div class="section" id="field-props-override">
 <h2>Field props override<a class="headerlink" href="#field-props-override" title="Permalink to this headline">¶</a></h2>
 <p>You can override field props individually. You can do this with a component called <code class="docutils literal notranslate"><span class="pre">FieldPropsOverride</span></code>. This is useful when you want to create an special field with some functionality that forces you to provide an event handler. Let’s see an example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Autoform</span><span class="p">,</span> <span class="n">FieldPropsOverride</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto&#39;</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="p">{</span> <span class="n">Autoform</span><span class="p">,</span> <span class="n">FieldPropsOverride</span> <span class="p">}</span> <span class="kn">from</span> <span class="s1">&#39;redux-form-auto-bootstrap3&#39;</span>
 
 <span class="n">const</span> <span class="n">Component</span> <span class="o">=</span> <span class="p">({</span> <span class="n">onKeyDown</span> <span class="p">})</span> <span class="o">=&gt;</span>
   <span class="o">&lt;</span><span class="n">Autoform</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="n">client</span><span class="p">}</span><span class="o">&gt;</span>

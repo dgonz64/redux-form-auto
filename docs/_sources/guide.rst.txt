@@ -1,12 +1,17 @@
 Guide
 =====
 
+Guide uses bootstrap3 skin in the examples. It can be substituted with your skin:
+
+* `redux-form-auto-bootstrap3 <https://github.com/dgonz64/redux-form-auto-bootstrap3>`_
+* `redux-form-auto-antd <https://github.com/dgonz64/redux-form-auto-antd>`_
+
 Types
 -----
 
 Each schema can be regarded as a Rails model or a database table. You can store them anywhere, for example in a module::
 
-  import { Schema } from 'redux-form-auto'
+  import { Schema } from 'redux-form-auto-bootstrap3'
 
   export const computer = new Schema('computers', { /* ...schema... */ })
 
@@ -18,9 +23,9 @@ Each first level entry in the schema object represents the fields in the form or
 
 These are the types a field can be:
 
-=========== ======================== ============================
+=========== ======================== =============================
 Type        Valid when...            Input control
-=========== ======================== ============================
+=========== ======================== =============================
 string      Value is a string        ``<input type="text" />``
 number      Value is a number        ``<input type="number" />``
 integer     Value is an integer      
@@ -29,7 +34,8 @@ integer     Value is an integer
 select      Value belongs to options ``<select />``
 radios      Value belongs to options ``<Radio />``
 boolean     Value is boolean         ``<input type="checkbox />``
-=========== ======================== ============================
+password    Value is a string        ``<input type="password" />``
+=========== ======================== =============================
 
 You can specify the type as a constructor. There's not an easily measurable advantage. Example::
 
@@ -139,7 +145,7 @@ Field props override
 
 You can override field props individually. You can do this with a component called ``FieldPropsOverride``. This is useful when you want to create an special field with some functionality that forces you to provide an event handler. Let's see an example::
 
-  import { Autoform, FieldPropsOverride } from 'redux-form-auto'
+  import { Autoform, FieldPropsOverride } from 'redux-form-auto-bootstrap3'
 
   const Component = ({ onKeyDown }) =>
     <Autoform schema={client}>

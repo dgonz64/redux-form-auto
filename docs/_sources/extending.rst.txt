@@ -6,7 +6,7 @@ Creating a skin
 
 The inputs and auxiliary elements are created using a set of components. The mapping can be set all together by overriding the skin.
 
-You can take a look at ``defaultSkin`` and ``components/index.js`` to have a glimpse.
+You can take a look at `skin.js <https://github.com/dgonz64/redux-form-auto-bootstrap3/blob/master/src/skin.js>`_ and `components/index.js <https://github.com/dgonz64/redux-form-auto-bootstrap3/tree/master/src/components>`_ from any skin to have a glimpse.
 
 There's an entry in the skin object for every field type. The value of the entry is an object with two attributes like in this example::
 
