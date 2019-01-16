@@ -41,8 +41,6 @@ You can specify the type as a constructor. There's not an easily measurable adva
 
   { type: String }
 
-See a list of the types here.
-
 Validators
 ----------
 

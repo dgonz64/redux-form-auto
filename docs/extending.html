@@ -443,6 +443,33 @@ addValidator(&#39;isEven&#39;, entry =&gt;
 </div>
 <p>Because the validator takes advantage of the closure from the constructor, it’s useful to write both in that cascade manner.</p>
 </div>
+<div class="section" id="override-or-add-type-validation">
+<h2>Override or add type validation<a class="headerlink" href="#override-or-add-type-validation" title="Permalink to this headline">¶</a></h2>
+<p>To avoid type errors as false positives you can change its behaviour in two ways:</p>
+<ul class="simple">
+<li>Adding <code class="docutils literal notranslate"><span class="pre">typeValidator</span></code> in the component definition when you create it.</li>
+<li>Calling addSpecialTypeValidator specifying the field and the validation.</li>
+</ul>
+<p>The validator has the same signature as others validators: Will receive the field’s value and returns <code class="docutils literal notranslate"><span class="pre">false</span></code> for “valid”.</p>
+<dl class="function">
+<dt id="addSpecialTypeValidator">
+<code class="descname">addSpecialTypeValidator</code><span class="sig-paren">(</span><em>type</em>, <em>validator</em><span class="sig-paren">)</span><a class="headerlink" href="#addSpecialTypeValidator" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a special type validation</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Arguments:</th><td class="field-body"><ul class="first last simple">
+<li><strong>type</strong> (<em>string</em>) – Type validated</li>
+<li><strong>validator</strong> (<em>function</em>) – value =&gt; true_to_fail validator</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
 </div>
 
 
