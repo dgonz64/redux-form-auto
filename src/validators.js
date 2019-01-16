@@ -15,6 +15,17 @@ export const specialTypes = {
 }
 
 /**
+ * Adds a special type validation
+ *
+ * @param {string} type Type validated
+ * @param {function} validator value => true_to_fail
+ *    validator
+ */
+export const addSpecialTypeValidator = (type, validator) => {
+  specialTypes[type] = validator
+}
+
+/**
  * Translates ArrayField error for ReduxForm
  *
  * @param {string} kind Error type

@@ -5,6 +5,7 @@ import React, {
 import PropTypes from 'prop-types'
 
 import { schemaTypeEx } from '../utils'
+import { addSpecialTypeValidator } from '../validators'
 
 export let components
 
@@ -150,6 +151,8 @@ export const setSkin = skin => {
  */
 export const addSkinType = (typeName, rendering) => {
   components[typeName] = rendering
+  if (rendering.typeValidator)
+    addSpecialTypeValidator(typeName, rendering.typeValidator)
 }
 
 export const getComponents = () => components

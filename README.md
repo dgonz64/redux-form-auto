@@ -6,8 +6,8 @@ This library allows your React application to automatically generate forms and v
 
 At the moment the *skins* available are:
 
-* [Bootstrap 3](https://github.com/dgonz64/redux-form-auto-bootstrap3).
-* [Antd](https://github.com/dgonz64/redux-form-auto-antd).
+* [Bootstrap 3](https://github.com/dgonz64/redux-form-auto-bootstrap3)
+* [Antd](https://github.com/dgonz64/redux-form-auto-antd)
 
 More skins will be added. [Join me](#help-wanted)!
 
@@ -18,7 +18,7 @@ More skins will be added. [Join me](#help-wanted)!
 
 ## Migration from 1.0.x
 
-The library doesn't include bootstrap 3 styles by default. If you want to use bootstrap 3 now you have to include its npm, see installation:
+The library doesn't include bootstrap 3 styles by default any more. If you want to use bootstrap 3 skin you have to include its npm, see [installation](#installation).
 
 ## Installation
 

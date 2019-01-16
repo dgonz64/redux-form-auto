@@ -1,7 +1,7 @@
 export { Schema } from './schema'
 export { Autoform } from './ui/Autoform'
 export { translatable } from './validation'
-export { addValidator } from './validators'
+export { addValidator, addSpecialTypeValidator } from './validators'
 export {
   addTranslations,
   setTranslator,
