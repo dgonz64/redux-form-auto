@@ -15,8 +15,8 @@ export class Autoform extends Component {
 
     // Allow for the skin to be set up
     const components = getComponents()
-    const Form = components.form.component
-    this.ConnectedForm = reduxForm()(Form)
+    this.Form = components.form.component
+    this.ConnectedForm = reduxForm()(this.Form)
   }
 
   /**
@@ -42,7 +42,7 @@ export class Autoform extends Component {
       ...rest
     } = this.props
 
-    const providedForm = form || schema.getType() || 'def'
+    const formName = form || schema.getType() || 'def'
 
     const errorer = noErrors ?
       null : (noTranslate ?
@@ -54,13 +54,13 @@ export class Autoform extends Component {
         schema.getWarningValidator()
         : schema.getTranslatedWarningValidator())
 
-    const $formComponent = noConnect ? Form : this.ConnectedForm
+    const $formComponent = noConnect ? this.Form : this.ConnectedForm
 
     const mergedInitial = mergeInitialValues(initialValues, schema)
 
     return (
       <$formComponent
-        form={providedForm}
+        form={formName}
         validate={errorer}
         warn={warner}
         initialValues={mergedInitial}
