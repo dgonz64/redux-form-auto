@@ -7,6 +7,7 @@ This library allows your React application to automatically generate forms and v
 At the moment the *skins* available are:
 
 * [Bootstrap 3](https://github.com/dgonz64/redux-form-auto-bootstrap3)
+* [Bootstrap 4](https://github.com/dgonz64/redux-form-auto-bootstrap4)
 * [Antd](https://github.com/dgonz64/redux-form-auto-antd)
 
 More skins will be added. [Join me](#help-wanted)!
@@ -14,6 +15,7 @@ More skins will be added. [Join me](#help-wanted)!
 ## Play with a demo
 
 * [Bootstrap 3](https://dgonz64.github.io/redux-form-auto/demo.html)
+* [Bootstrap 4](https://dgonz64.github.io/redux-form-auto-bootstrap4-demo/demo/)
 * [Antd](https://dgonz64.github.io/redux-form-auto-antd/demo/)
 
 ## Migration from 1.0.x
@@ -29,6 +31,7 @@ Choose the skin and import the corresponding package
 Current skins:
 
 * redux-form-auto-bootstrap3
+* redux-form-auto-bootstrap4
 * redux-form-auto-antd
 
 ## Usage
@@ -39,6 +42,8 @@ Write a schema for each model you have:
 
 ```javascript
     import { Schema } from 'redux-form-auto-bootstrap3'
+    // ... or ...
+    import { Schema } from 'redux-form-auto-bootstrap4'
     // ... or ...
     import { Schema } from 'redux-form-auto-antd'
 

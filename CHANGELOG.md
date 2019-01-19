@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.1.2
+
+### Added
+
+- Bootstrap 4 skin @ redux-form-auto-bootstrap4
+
+### Fixed
+
+- Correct component form creation for connected versus not connected form components
+- Correct warns for nested components
+
+## 1.1.1
+
+### Added
+
+- Being able to override type validation
+
 ## 1.1.0
 
 ### Changed
