@@ -72,8 +72,9 @@ export const testFactory = {
 		} else {
 			const typeStr = schemaType(type)
 			const tester = specialTypes[typeStr]
-			return value => {
-				if (value) {
+			return (value, validationType) => {
+        // We don't want to complain in the warn pass
+				if (value && validationType == 'error') {
 					if (tester)
 						return tester(value)
 					else

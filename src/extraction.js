@@ -110,7 +110,16 @@ const extractErrorer = entry => {
 /**
  * Extracts just the warning block
  */
-const extractWarner = entry => extract(entry.warning)
+const extractWarner = entry => {
+  return [
+    // Validate the type in order to navigate
+    // through subschemas
+    ...extract({ type: entry.type }),
+
+    // The actual warnings
+    ...extract(entry.warning)
+  ]
+}
 
 /**
  * Bridge to extract the desired validations.
