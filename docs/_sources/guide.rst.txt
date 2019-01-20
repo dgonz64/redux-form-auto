@@ -60,6 +60,17 @@ reject      regex    The value is not matching the regex
 options     array    For the select like inputs. Value should be in options
 =========== ======== ============================================================
 
+The ``validation`` validator
+----------------------------
+
+The function used to validate the field, as any other validator, can return:
+
+* true to fail or false to pass
+* An string that will be the error message
+* A translatable object that will be sent to the translator
+
+Use ``translatable()`` to create the translatable object. See :ref:`translatableObject <translatable>`
+
 Scope
 -----
 

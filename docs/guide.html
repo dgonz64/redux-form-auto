@@ -169,6 +169,16 @@
 </tbody>
 </table>
 </div>
+<div class="section" id="the-validation-validator">
+<h2>The <code class="docutils literal notranslate"><span class="pre">validation</span></code> validator<a class="headerlink" href="#the-validation-validator" title="Permalink to this headline">¶</a></h2>
+<p>The function used to validate the field, as any other validator, can return:</p>
+<ul class="simple">
+<li>true to fail or false to pass</li>
+<li>An string that will be the error message</li>
+<li>A translatable object that will be sent to the translator</li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">translatable()</span></code> to create the translatable object. See <a class="reference internal" href="translations.html#translatable"><span class="std std-ref">translatableObject</span></a></p>
+</div>
 <div class="section" id="scope">
 <h2>Scope<a class="headerlink" href="#scope" title="Permalink to this headline">¶</a></h2>
 <p>The validation rules can appear in two different places:</p>

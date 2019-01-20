@@ -133,9 +133,9 @@
 <p>Every input component expects at least these props:</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="23%" />
-<col width="22%" />
-<col width="55%" />
+<col width="16%" />
+<col width="15%" />
+<col width="69%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">Prop</th>
@@ -168,9 +168,14 @@
 <td>string</td>
 <td>Passed to <code class="docutils literal notranslate"><span class="pre">inputComponent</span></code></td>
 </tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">typeValidator</span></code></td>
+<td>function</td>
+<td>Validator for the type. See <a class="reference internal" href="#type-val"><span class="std std-ref">“Override or add type validation”</span></a></td>
+</tr>
 </tbody>
 </table>
 <p>There are also other props passed depending on current implementation of <code class="docutils literal notranslate"><span class="pre">renderInput</span></code>, the function in charge of choosing the component and render it.</p>
+<p><code class="docutils literal notranslate"><span class="pre">typeValidator</span></code> is needed to avoid an error when validating field’s type. If unsure provide <code class="docutils literal notranslate"><span class="pre">value</span> <span class="pre">=&gt;</span> <span class="pre">false</span></code>.</p>
 </div>
 <div class="section" id="form-component">
 <h2>Form component<a class="headerlink" href="#form-component" title="Permalink to this headline">¶</a></h2>
@@ -442,9 +447,10 @@ addValidator(&#39;isEven&#39;, entry =&gt;
 </pre></div>
 </div>
 <p>Because the validator takes advantage of the closure from the constructor, it’s useful to write both in that cascade manner.</p>
+<p>You can construct translatable objects using <code class="docutils literal notranslate"><span class="pre">translatable()</span></code>. See <a class="reference internal" href="translations.html#translatable"><span class="std std-ref">Translatable objects</span></a></p>
 </div>
 <div class="section" id="override-or-add-type-validation">
-<h2>Override or add type validation<a class="headerlink" href="#override-or-add-type-validation" title="Permalink to this headline">¶</a></h2>
+<span id="type-val"></span><h2>Override or add type validation<a class="headerlink" href="#override-or-add-type-validation" title="Permalink to this headline">¶</a></h2>
 <p>To avoid type errors as false positives you can change its behaviour in two ways:</p>
 <ul class="simple">
 <li>Adding <code class="docutils literal notranslate"><span class="pre">typeValidator</span></code> in the component definition when you create it.</li>

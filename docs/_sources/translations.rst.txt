@@ -97,6 +97,8 @@ Example::
 
 Or you can drop it directly to ``setTranslator()`` if it's compatible.
 
+.. _translatable:
+
 Translatable objects
 ^^^^^^^^^^^^^^^^^^^^
 
