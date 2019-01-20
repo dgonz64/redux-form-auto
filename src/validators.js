@@ -1,7 +1,7 @@
 import { Schema } from './schema'
 import {
-	schemaType,
-	getType
+  schemaType,
+  getType
 } from './utils'
 
 /**
@@ -47,10 +47,10 @@ export const errorReport = (kind, error) => {
  * Error creators with the validator factories.
  */
 export const testFactory = {
-	type: entry => {
-		const { type } = entry
+  type: entry => {
+    const { type } = entry
 
-		if (type instanceof Schema) {
+    if (type instanceof Schema) {
       return (value, validationType) => {
         if (value) {
           if (typeof value == 'object')
@@ -60,58 +60,58 @@ export const testFactory = {
         } else
           return false
       }
-		} else if (Array.isArray(type)) {
-			const schema = type[0]
+    } else if (Array.isArray(type)) {
+      const schema = type[0]
 
-			return (value, validationType) => {
-				if (value && Array.isArray(value)) {
-					return value.map(child =>
-						schema.validateType(
-							child,
-							validationType
-						)
-					)
-				} else
-					return false
-			}
-		} else {
-			const typeStr = schemaType(type)
-			const tester = specialTypes[typeStr]
-			return (value, validationType) => {
+      return (value, validationType) => {
+        if (value && Array.isArray(value)) {
+          return value.map(child =>
+            schema.validateType(
+              child,
+              validationType
+            )
+          )
+        } else
+          return false
+      }
+    } else {
+      const typeStr = schemaType(type)
+      const tester = specialTypes[typeStr]
+      return (value, validationType) => {
         // We don't want to complain in the warn pass
-				if (value && validationType == 'error') {
-					if (tester)
-						return tester(value)
-					else
-						return getType(value) != typeStr
-				} else
-					return false
-			}
-		}
-	},
-	min: entry =>
-		value => value && value.length < entry.min,
-	max: entry =>
-		value => value && value.length > entry.max,
-	required: entry =>
-		value => !Boolean(value),
-	minChildren: entry =>
-		value => 
-			!Array.isArray(value) ||
-			value.length < (entry.minChildren || 0),
-	maxChildren: entry =>
-		value =>
-			!Array.isArray(value) ||
-        (entry.maxChildren && value.length > entry.maxChildren),
+        if (value && validationType == 'error') {
+          if (tester)
+            return tester(value)
+          else
+            return getType(value) != typeStr
+        } else
+          return false
+      }
+    }
+  },
+  min: entry =>
+    value => value && value.length < entry.min,
+  max: entry =>
+    value => value && value.length > entry.max,
+  required: entry =>
+    value => !Boolean(value),
+  minChildren: entry =>
+    value => 
+    !Array.isArray(value) ||
+     value.length < (entry.minChildren || 0),
+  maxChildren: entry =>
+    value =>
+     !Array.isArray(value) ||
+      (entry.maxChildren && value.length > entry.maxChildren),
   validation: entry =>
     value =>
-      entry.validation(value, entry),
-	accept: entry =>
-		value => value ?
-			!entry.accept.test(value) : false,
-	reject: entry =>
-		value => value && typeof value == 'string' ?
-			entry.reject.test(value) : false,
+     entry.validation(value, entry),
+  accept: entry =>
+    value => value ?
+     !entry.accept.test(value) : false,
+  reject: entry =>
+    value => value && typeof value == 'string' ?
+     entry.reject.test(value) : false,
   options: entry =>
     value => value && entry.options.indexOf(value) == -1
 }
