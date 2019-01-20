@@ -51,10 +51,15 @@ export const testFactory = {
 		const { type } = entry
 
 		if (type instanceof Schema) {
-			return (value, validationType) => value ?
-				(typeof value == 'object' ?
-					type.validateType(value, validationType) : true )
-				: false
+      return (value, validationType) => {
+        if (value) {
+          if (typeof value == 'object')
+            return type.validateType(value, validationType)
+          else
+            return validationType == 'error'
+        } else
+          return false
+      }
 		} else if (Array.isArray(type)) {
 			const schema = type[0]
 
