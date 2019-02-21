@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.3
+
+### Changed
+
+- Updated insecure packages
+
 ## 1.1.2
 
 ### Added
