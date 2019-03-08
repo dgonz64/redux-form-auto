@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.5
+
+### Fixed
+
+- Travis green stuff (hopefully)
+
 ## 1.1.4
 
 ### Fixed
