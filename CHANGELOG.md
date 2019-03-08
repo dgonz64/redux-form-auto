@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.4
+
+### Fixed
+
+- Strings are translated properly when substitution value is falsy
+
 ## 1.1.3
 
 ### Changed

@@ -35,7 +35,7 @@ const regexReplace = (regex, str, callback) => {
   const re = new RegExp(regex)
   while ((match = re.exec(str)) !== null) {
     const value = callback(match[1])
-    if (value)
+    if (typeof value != 'undefined')
       result = result.replace(match[0], value)
   }
 
