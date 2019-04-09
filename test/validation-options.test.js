@@ -19,6 +19,29 @@ test('allows blank', () => {
 })
 
 
+test('accepts allowed complex value', () => {
+  const complexSchema = new Schema('complexOwner', {
+    color: {
+      type: 'select',
+      options: [
+        { label: 'red', value: 'r' },
+        { label: 'blue', value: 'b' }
+      ]
+    }
+  })
+
+  const result = complexSchema.validate({
+    color: 'r',
+  })
+
+  expect(result).toEqual({
+    errors: {},
+    valid: true,
+    warnings: {}
+  })
+})
+
+
 test('accepts allowed value', () => {
   const result = schema.validate({
     color: 'red',

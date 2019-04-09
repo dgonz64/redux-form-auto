@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.6
+
+### Added
+
+- Radio and select options can now be objets with label and value.
+
 ## 1.1.5
 
 ### Fixed

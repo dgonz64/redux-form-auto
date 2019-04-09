@@ -113,7 +113,9 @@ export const testFactory = {
     value => value && typeof value == 'string' ?
      entry.reject.test(value) : false,
   options: entry =>
-    value => value && entry.options.indexOf(value) == -1
+    value => value && entry.options.reduce((invalid, op) => {
+      return invalid && (op.value || op) != value
+    }, true)
 }
 
 /**

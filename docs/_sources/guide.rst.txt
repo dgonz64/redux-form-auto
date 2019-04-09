@@ -41,6 +41,28 @@ You can specify the type as a constructor. There's not an easily measurable adva
 
   { type: String }
 
+select and radios
+^^^^^^^^^^^^^^^^^
+
+They both allow options as an array that can be one of strings with the options keys that will be feed to translator using ``trModel()`` or can be objects in the form ``{ value, label }``. If an object is provided, label will be used for the HTML content (display) and value for the option's value.
+
+Example with keys::
+
+  {
+    type: 'select',
+    options: ['red', 'blue']
+  }
+  
+Example with objects::
+
+  {
+    type: 'select',
+    options: [
+      { value: 'r', type: 'red' },
+      { value: 'b', type: 'blue' }
+    ]
+  }
+
 Validators
 ----------
 
