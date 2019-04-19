@@ -1,14 +1,4 @@
 {
-	"presets": [
-		["env", {
-			"targets": {
-				"node": "8.9.4"
-			},
-			"modules": "commonjs"
-		}]
-	],
-	"plugins": [
-		"transform-object-rest-spread",
-		"transform-react-jsx"
-	]
+	"presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": ["@babel/plugin-proposal-class-properties"]
 }
