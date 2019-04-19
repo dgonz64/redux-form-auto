@@ -163,11 +163,12 @@ const createValidators = ({
   const validationsByKey = extractValidations(schema, extractor)
   extractor.validationType = validationType
 
-  return model => {
+  return (model, props) => {
     const validation = validate({
       model,
       validationsByKey,
-      validationType
+      validationType,
+      props
     })
     return validation
   }

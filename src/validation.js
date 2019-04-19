@@ -36,13 +36,14 @@ const validateEntry = ({
   validationType,
   value,
   validations,
+  props
 }) =>
   validations.reduce((msg, validation) => {
     if (msg) {
       return msg
     } else {
       const validator = validation.test
-      const result = validator(value, validationType)
+      const result = validator(value, validationType, props)
       const trimmed = arrayTrim(result)
       if (trimmed) {
         if (typeof trimmed == 'boolean') {
@@ -70,13 +71,16 @@ const validateEntry = ({
  * @param {object} validationsByKey Object with the
  *    validators stored by field
  * @param {string} validationType 'error' or 'warning'
+ * @param {object} props Pass props to your validators.
+ *    Validator will receive it as its third parameter.
  *
  * @returns {object} Validation messages for ReduxForm.
  */
 export const validate = ({
   model,
   validationsByKey,
-  validationType
+  validationType,
+  props
 }) => {
   const keys = Object.keys(validationsByKey)
   return keys.reduce((messages, key) => {
@@ -84,7 +88,8 @@ export const validate = ({
     const msg = validateEntry({
       validations,
       value: model[key],
-      validationType
+      validationType,
+      props
     })
 
     if (msg && !objectIsEmpty(msg))

@@ -61,8 +61,8 @@ export class Autoform extends Component {
     return (
       <$formComponent
         form={formName}
-        validate={errorer}
-        warn={warner}
+        validate={doc => errorer(doc, rest)}
+        warn={doc => warner(doc, rest)}
         initialValues={mergedInitial}
         {...rest}
         {...formProps}

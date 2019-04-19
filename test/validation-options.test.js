@@ -42,6 +42,29 @@ test('accepts allowed complex value', () => {
 })
 
 
+test('accepts functions as options', () => {
+  const dynamicSchema = new Schema('dynamicOwner', {
+    color: {
+      type: 'select',
+      options: props => {
+        return props.colors.map(({ id, name }) => ({
+          value: id,
+          label: name
+        }))
+      }
+    }
+  })
+
+  const result = dynamicSchema.validate({
+    color: 'r',
+  }, {
+    colors: [
+      { id: 'r', name: 'red' },
+      { id: 'b', name: 'blue' }
+    ]
+  })
+})
+
 test('accepts allowed value', () => {
   const result = schema.validate({
     color: 'red',

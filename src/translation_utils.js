@@ -45,8 +45,8 @@ const translateMsgs = msgs => {
  * @returns {object}
  */
 const createTranslatedValidator = validator =>
-  model => {
-    const msgs = validator(model)
+  (model, props) => {
+    const msgs = validator(model, props)
     return translateMsgs(msgs)
   }
 

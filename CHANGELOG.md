@@ -2,9 +2,14 @@
 
 ## 1.1.6
 
+### Changed
+
+- Updated to Babel 7. Please, open an issue if it causes problems to you.
+
 ### Added
 
 - Radio and select options can now be objets with label and value.
+- Radio and select can also be functions. It will receive component props.
 
 ## 1.1.5
 

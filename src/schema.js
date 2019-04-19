@@ -118,10 +118,10 @@ export class Schema {
    *
    * @returns {object} Validation tree
    */
-  validateType(doc, validationType) {
+  validateType(doc, validationType, props) {
     const validator = this.validators[validationType]
 
-    return validator(doc)
+    return validator(doc, props)
   }
 
   /**
@@ -141,12 +141,14 @@ export class Schema {
    * object about the results.
    *
    * @param {object} doc Document to validate
+   * @param {object} props Data passed to validator
+   *    as third parameter
    *
    * @returns {validationResult}
    */
-  validate(doc) {
-    const errors = this.validateType(doc, 'error')
-    const warnings = this.validateType(doc, 'warning')
+  validate(doc, props) {
+    const errors = this.validateType(doc, 'error', props)
+    const warnings = this.validateType(doc, 'warning', props)
 
     return {
       valid: Object.keys(errors).length == 0,
