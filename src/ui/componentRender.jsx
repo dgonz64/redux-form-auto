@@ -12,7 +12,11 @@ export let components
 /**
  * Allows to specify extra props for a field in runtime.
  */
-export class FieldPropsOverride extends PureComponent {}
+export class FieldPropsOverride extends PureComponent {
+  render() {
+    return null
+  }
+}
 
 FieldPropsOverride.propTypes = {
   name: PropTypes.string.isRequired

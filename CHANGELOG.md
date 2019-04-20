@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.7
+
+### Fixed
+
+- FieldPropsOverride has an empty render so React doesn't complain
+
 ## 1.1.6
 
 ### Changed
