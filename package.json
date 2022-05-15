@@ -32,27 +32,27 @@
     "url": "https://github.com/dgonz64/redux-form-auto"
   },
   "devDependencies": {
-    "@babel/cli": "^7.4.3",
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
-    "jest": "^24.7.0",
-    "react": "^16.7.0",
+    "@babel/cli": "^7.17.10",
+    "@babel/core": "^7.17.10",
+    "@babel/plugin-proposal-class-properties": "^7.16.7",
+    "@babel/preset-env": "^7.17.10",
+    "@babel/preset-react": "^7.16.7",
+    "jest": "^28.1.0",
+    "react": "^16.7.0 || ^17.0.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-form": "^8.3.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^3.0.2"
   },
   "peerDependencies": {
-    "react": "^15.0.0-0 || ^16.0.0-0",
-    "react-redux": "^4.3.0 || ^5.0.0",
-    "redux-form": "^7.0.0",
-    "redux": "^3.0.0"
+    "react": "^17.0.0",
+    "react-redux": "^8.0.1",
+    "redux-form": "^8.3.8",
+    "redux": "^4.2.0"
   },
   "dependencies": {
-    "classnames": "^2.2.5",
-    "deep-extend": "^0.5.0",
-    "prop-types": "^15.6.0"
+    "classnames": "^2.3.1",
+    "deep-extend": "^0.6.0",
+    "prop-types": "^15.8.1"
   }
 }

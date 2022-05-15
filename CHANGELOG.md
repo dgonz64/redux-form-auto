@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.8
+
+### Fixed
+
+- Fixing security concerns
+
 ## 1.1.7
 
 ### Fixed
