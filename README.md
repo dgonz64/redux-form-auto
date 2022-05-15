@@ -12,6 +12,10 @@ At the moment the *skins* available are:
 
 More skins will be added. [Join me](#help-wanted)!
 
+# Project status
+
+This is more or less abandonware. I will probably update for security concerns. Anyway, if you have a need, try to open an issue. If it's easy I may do it. And of course, PRs are welcome.
+
 ## Play with a demo
 
 * [Bootstrap 3](https://dgonz64.github.io/redux-form-auto/demo.html)
