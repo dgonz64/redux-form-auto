@@ -32,17 +32,17 @@
     "url": "https://github.com/dgonz64/redux-form-auto"
   },
   "devDependencies": {
-    "@babel/cli": "^7.17.10",
-    "@babel/core": "^7.17.10",
-    "@babel/plugin-proposal-class-properties": "^7.16.7",
-    "@babel/preset-env": "^7.17.10",
-    "@babel/preset-react": "^7.16.7",
+    "@babel/cli": "^7.24.6",
+    "@babel/core": "^7.24.6",
+    "@babel/plugin-transform-class-properties": "^7.24.6",
+    "@babel/preset-env": "^7.24.6",
+    "@babel/preset-react": "^7.24.6",
     "jest": "^28.1.0",
     "react": "^16.7.0 || ^17.0.0",
     "react-redux": "^6.0.0",
     "redux": "^4.0.1",
     "redux-form": "^8.3.0",
-    "rimraf": "^3.0.2"
+    "rimraf": "^5.0.7"
   },
   "peerDependencies": {
     "react": "^16.0.0 || ^17.0.0",
@@ -51,7 +51,7 @@
     "redux": "^4.0.0"
   },
   "dependencies": {
-    "classnames": "^2.3.1",
+    "classnames": "^2.5.1",
     "deep-extend": "^0.6.0",
     "prop-types": "^15.8.1"
   }

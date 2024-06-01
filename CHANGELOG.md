@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.10
+
+### Fixed
+
+- Peer dependencies
+
 ## 1.1.9
 
 ### Fixed
